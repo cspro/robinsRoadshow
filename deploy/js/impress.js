@@ -244,6 +244,9 @@
         // element of currently active step
         var activeStep = null;
         
+        // element of currently active step
+        var prevActiveStep = null;
+        
         // current state (position, rotation and scale) of the presentation
         var currentState = null;
         
@@ -276,9 +279,10 @@
         // `onStepEnter` is called whenever the step element is entered
         // but the event is triggered only if the step is different than
         // last entered step.
-        var onStepEnter = function (step) {
+        //MODIFIED
+        var onStepEnter = function (step, prevStep) {
             if (lastEntered !== step) {
-                triggerEvent(step, "impress:stepenter");
+                triggerEvent(step, "impress:stepenter", {'startingStep': prevStep, 'endingStep': step});
                 lastEntered = step;
             }
         };
@@ -286,9 +290,10 @@
         // `onStepLeave` is called whenever the step element is left
         // but the event is triggered only if the step is the same as
         // last entered step.
-        var onStepLeave = function (step) {
+        //MODIFIED
+        var onStepLeave = function (step, nextStep) {
             if (lastEntered === step) {
-                triggerEvent(step, "impress:stepleave");
+                triggerEvent(step, "impress:stepleave", {'startingStep': step, 'endingStep': nextStep});
                 lastEntered = null;
             }
         };
@@ -483,7 +488,7 @@
             
             // trigger leave of currently active element (if it's not the same step again)
             if (activeStep && activeStep !== el) {
-                onStepLeave(activeStep);
+                onStepLeave(activeStep, el);
             }
             
             // Now we alter transforms of `root` and `canvas` to trigger transitions.
@@ -526,6 +531,7 @@
             
             // store current state
             currentState = target;
+            prevActiveStep = activeStep ? activeStep : el;
             activeStep = el;
             
             // And here is where we trigger `impress:stepenter` event.
@@ -542,7 +548,7 @@
             // version 0.5.2 of impress.js: http://github.com/bartaz/impress.js/blob/0.5.2/js/impress.js
             window.clearTimeout(stepEnterTimeout);
             stepEnterTimeout = window.setTimeout(function() {
-                onStepEnter(activeStep);
+                onStepEnter(activeStep, prevActiveStep);
             }, duration + delay);
             
             return el;
@@ -556,12 +562,33 @@
             return goto(prev);
         };
         
+        //MODIFIED
+        var getPrev = function () {
+            var prev = steps.indexOf( activeStep ) - 1;
+            prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ];
+            
+            return prev;
+        };
+        
         // `next` API function goes to next step (in document order)
         var next = function () {
             var next = steps.indexOf( activeStep ) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ];
             
             return goto(next);
+        };
+        
+        //MODIFIED
+        var getNext = function() {
+            var next = steps.indexOf( activeStep ) + 1;
+            next = next < steps.length ? steps[ next ] : steps[ 0 ];
+            
+            return next;
+        };
+        
+        //MODIFIED
+        var getSteps = function() {
+        		return steps;
         };
         
         // Adding some useful classes to step elements.
@@ -635,7 +662,10 @@
             init: init,
             goto: goto,
             next: next,
-            prev: prev
+            prev: prev,
+            getSteps: getSteps,
+            getPrev: getPrev,
+            getNext: getNext
         });
 
     };

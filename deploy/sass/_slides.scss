@@ -1,0 +1,177 @@
+/* ======================================
+ * impress.js classes 
+ * ======================================*/
+
+.step {
+  position: relative;
+  width: 1000px;
+  height: 750px;
+  padding: 20px;
+  margin: 20px auto;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing:    border-box;
+  -ms-box-sizing:     border-box;
+  -o-box-sizing:      border-box;
+  box-sizing:         border-box;
+}
+
+/* ======================================
+ * Visibility handling 
+ * ======================================*/
+
+.impress-enabled .step {
+  margin: 0;
+  opacity: 1;
+
+  -webkit-transition: opacity 1s;
+  -moz-transition:    opacity 1s;
+  -ms-transition:     opacity 1s;
+  -o-transition:      opacity 1s;
+  transition:         opacity 1s;
+  
+  .slideCover, .slideContent {
+    transition: opacity 1s;
+  }
+  .slideCover {
+    opacity: 1;
+  }
+  .slideContent {
+    opacity: 0;
+  }
+}
+
+.impress-enabled .step.active { 
+  opacity: 1;
+  .slideCover {
+    opacity: 0;
+  }
+  .slideContent {
+    opacity: 1;
+  }
+}
+
+/* Make all slides visible on overview */
+.impress-on-overview .step {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Page class is set to current slide id in event handler */
+.slideCover {
+  .sectionIcon span {
+    transition: all 1s;
+  }
+}
+
+.upperLevel {
+  .generatedSlide {
+    display: none;
+  }
+  .depth0 {
+    display: block;
+  }
+}
+.lowerLevel {
+  .generatedSlide {
+    display: block;
+  }
+}
+
+.titleSlide {
+  .depth0 {
+    opacity: 1;
+    .slideCover {
+      .sectionIcon span {
+        transform:          rotate(-90deg);
+        -ms-transform:      rotate(-90deg); /* IE 9 */
+        -webkit-transform:  rotate(-90deg); /* Opera, Chrome, and Safari */
+      }
+    }
+  }
+} 
+
+/* ======================================
+ * Custom classes 
+ * ======================================*/
+
+.table {
+  display: table;
+}
+
+.cell {
+  display: table-cell;
+}
+
+.centerBoth {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.slide {
+  display: block;
+  border-collapse: collapse;
+  padding: 0;
+  // border: 4px solid red;
+  border-radius: 0px;
+  // box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+  // text-shadow: 0 2px 2px rgba(0, 0, 0, .3);
+  .slideWrapper {
+    display: block;
+    width: 100%; 
+    height: 100%;
+    .slideCover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      // background-color: $bgColor1;
+    }
+    .slideContent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      padding: 1em;
+    }
+  }
+}
+
+/* ======================================
+ * Individual slide styles 
+ * ======================================*/
+
+#overview { 
+  display: none 
+}
+
+#titleSlide {
+  border-left: 3px solid $primaryAccentColor;
+  .content {
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    margin-top: -150px;
+    left: 40px;
+    * {
+      margin: 0;
+        }
+    h1 {
+      font-size: 100px;
+      color: $primaryTextColor;
+      line-height: 100%;
+    }
+    h2 {
+      margin-top: 30px;
+      font-size: 40px;
+      color: $primaryAccentColor;
+      text-transform: uppercase;
+      font-weight: normal;
+      letter-spacing: 6px;
+    }
+  }
+}

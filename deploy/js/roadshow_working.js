@@ -53,43 +53,45 @@ roadshow.MainCtrl = function($scope, $timeout) {
 		slide.rotate = 0;
 		$scope.slides.push(slide);
 		slide.bgColor = getRandomColor(); //'#'+(Math.random()*0xFFFFFF<<0).toString(16);
-		depth++;
 		if (slide.children) {
 			// divide evenly by number of children
 			slide.childWidth = Math.min(Math.floor(slide.w * $scope.childScale), Math.floor(slide.w / slide.children.length));
 			slide.childScale = Math.min((slide.scale * $scope.childScale), (slide.scale * (slide.childWidth / slide.w)));
 			slide.childHeight = Math.floor(slide.h * slide.childScale);
 			// Hacky manual adjustment to compensate for css scaling inaccuracy
+			var xAdj = 0;
+			var yAdj = 0;
+			switch (depth) {
+				case 0:
+					break;
+				case 1: // 1.1
+					xAdj = 12 + i;
+					yAdj = -5;
+					break;
+				case 2: // 1.1.1
+					xAdj = 2 + (i*0.75);
+					yAdj = -14;
+					break;
+				case 3: // 1.1.1.1
+					xAdj = 0.5 + (i*0.5);
+					yAdj = 8.5;
+					break;
+				case 4: // 1.1.1.1.1
+					xAdj = (i*0.5);
+					yAdj = 2.5;
+					break;
+				case 5:
+					xAdj = 1;
+					yAdj = 0.85;
+					break;
+			};
+			depth++;
 			for (var i = 0; i < slide.children.length; i++) {
-				var xAdj = 0;
-				var yAdj = 0;
-				switch (depth) {
-					case 0: 
-						xAdj = 0;
-						yAdj = 0;
-						break;
-					case 1:
-						xAdj = 1 + i;
-						yAdj = 0;
-						break;
-					case 2: // 1.1.1
-						xAdj = 0 + i;
-						yAdj = -17;
-						break;
-					case 3: // 1.1.1.1
-						xAdj = 0 + (i*0.75);
-						yAdj = 11.5;
-						break;
-					case 4: // 1.1.1.1.1
-						xAdj = 0.5 + (i*0.5);
-						yAdj = 8.5;
-						break;
-				};
 				var child = slide.children[i];
 				var childX = slide.x + (slide.childWidth * (i+1)) - (slide.childWidth/2) - slide.w/2;
 				childX += xAdj;
 				var childY = slide.y + (slide.h/2) - Math.ceil(slide.childHeight/2) + yAdj;
-				var childZ = slide.z + Math.round(10 * slide.childScale);
+				var childZ = slide.z + Math.round(50 * slide.childScale);
 				setSlidePos(child, slide, childX, childY, childZ, depth);
 			}
 		}
@@ -126,15 +128,14 @@ roadshow.MainCtrl = function($scope, $timeout) {
 	
 	$scope.delayedInit = function() {
 		impress().init();
-		$scope.steps = impress().getSteps();
+		$scope.ready = true;
 	};
 	
-	$scope.onStepChange = function(e) {
+	$scope.onStepChange = function(stepId, e) {
 		// debugger;
-		console.log('onStepChange. Event type: ' + e.type + '. startingStep: ' + e.detail.startingStep.id + '. endingStep: ' + e.detail.endingStep.id);
-		var endingId = e.detail.endingStep.id;
-		$scope.currSlide = endingId;
-		if (endingId == 'overviewSlide' || endingId == 'titleSlide') {
+		console.log('onStepChange. stepId: ' + stepId + '. Event type: ' + e.type);
+		$scope.currSlide = stepId;
+		if (stepId == 'overviewSlide' || stepId == 'titleSlide') {
 			$scope.bodyClass = 'upperLevel';
 		} else {
 			$scope.bodyClass = 'lowerLevel';
@@ -142,15 +143,40 @@ roadshow.MainCtrl = function($scope, $timeout) {
 		$scope.$apply();
 	};
 	
-	$scope.onImpressInit = function(e) {
-		console.log('onImpressInit.');
-		var stepId = impress().getNext().id;
+	$scope.onStepEnter = function(stepId) {
+		console.log('onStepEnter. stepId: ' + stepId);
+		$scope.currSlide = stepId;
 		if (stepId == 'overviewSlide' || stepId == 'titleSlide') {
 			$scope.bodyClass = 'upperLevel';
 		} else {
 			$scope.bodyClass = 'lowerLevel';
 		}
-		$scope.ready = true;
+		$scope.$apply();
+	};
+	
+	$scope.onStepLeave = function(step) {
+		console.log('onStepLeave. $scope.currSlide:' + $scope.currSlide);
+		var nextId = step.nextElementSibling.id;
+		$scope.currSlide = nextId;
+		if (nextId == 'overviewSlide' || nextId == 'titleSlide') {
+			$scope.bodyClass = 'upperLevel';
+		} else {
+			$scope.bodyClass = 'lowerLevel';
+		}
+		if (step.id == 'overviewSlide' && nextId == 'titleSlide') {
+			
+		}
+		$scope.$apply();
+	};
+	
+	$scope.onImpressInit = function(stepId) {
+		console.log('onImpressInit. stepId: ' + stepId);
+		$scope.currSlide = stepId;
+		if (stepId == 'overviewSlide' || stepId == 'titleSlide') {
+			$scope.bodyClass = 'upperLevel';
+		} else {
+			$scope.bodyClass = 'lowerLevel';
+		}
 		$scope.$apply();
 	};
 	
@@ -162,18 +188,14 @@ roadshow.MainCtrl = function($scope, $timeout) {
 roadshow.App.directive('stepListen', function() {
 	return function (scope, elem, attrs) {
 		elem.on('impress:stepenter', function(e) {
-			scope.onStepChange(e);
+			scope.onStepChange(this.id, e);
 		});
 		elem.on('impress:stepleave', function(e) {
-			scope.onStepChange(e);
+			var nextId = this.nextElementSibling.id;
+			scope.onStepChange(nextId, e);
 		});
-	};
-});
-
-roadshow.App.directive('impressInit', function() {
-	return function (scope, elem, attrs) {
 		elem.on('impress:init', function(e) {
-			scope.onImpressInit(e);
+			scope.onStepChange(this.id, e);
 		});
 	};
 });
