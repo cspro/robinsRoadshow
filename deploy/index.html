@@ -13,7 +13,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Michael Daross" />
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" /> -->
 
     <link href="css/roadshow.css" rel="stylesheet" />
     
@@ -62,7 +62,7 @@
     
 		<div ng-repeat="slide in slides"
 			data-step-listen
-			style="width: {{slideWidth+'px'}}; height: {{slideHeight+'px'}}; background-color: {{slide.bgColor}}" 
+			style="width: {{slideWidth+'px'}}; height: {{slideHeight+'px'}};" 
 			class="step slide generatedSlide {{'slide'+slide.id}} {{'depth'+slide.depth}}"
 			id="{{slide.id}}" 
 			data-x="{{slide.x}}"
