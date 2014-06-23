@@ -443,64 +443,66 @@ a:focus {
   -o-transition: opacity 1s;
   transition: opacity 1s;
 }
-/* line 33, ../sass/_slides.scss */
+/* line 34, ../sass/_slides.scss */
 .impress-enabled .step .slideCover, .impress-enabled .step .slideContent {
   transition: opacity 1s;
 }
-/* line 36, ../sass/_slides.scss */
+/* line 37, ../sass/_slides.scss */
 .impress-enabled .step .slideCover {
   opacity: 1;
 }
-/* line 39, ../sass/_slides.scss */
+/* line 40, ../sass/_slides.scss */
 .impress-enabled .step .slideContent {
   opacity: 0;
 }
 
-/* line 44, ../sass/_slides.scss */
+/* line 45, ../sass/_slides.scss */
 .impress-enabled .step.active {
+  transition: opacity 1s;
   opacity: 1;
 }
-/* line 46, ../sass/_slides.scss */
+/* line 48, ../sass/_slides.scss */
 .impress-enabled .step.active .slideCover {
   opacity: 0;
 }
-/* line 49, ../sass/_slides.scss */
+/* line 51, ../sass/_slides.scss */
 .impress-enabled .step.active .slideContent {
   opacity: 1;
 }
 
 /* Make all slides visible on overview */
-/* line 55, ../sass/_slides.scss */
+/* line 57, ../sass/_slides.scss */
 .impress-on-overview .step {
+  transition: opacity 1s;
   opacity: 1;
   cursor: pointer;
 }
 
 /* Page class is set to current slide id in event handler */
-/* line 62, ../sass/_slides.scss */
+/* line 65, ../sass/_slides.scss */
 .slideCover .sectionIcon span {
   transition: all 1s;
 }
 
-/* line 68, ../sass/_slides.scss */
-.upperLevel .generatedSlide {
-  display: none;
-}
 /* line 71, ../sass/_slides.scss */
+.upperLevel .generatedSlide {
+  opacity: 0;
+}
+/* line 74, ../sass/_slides.scss */
 .upperLevel .depth0 {
-  display: block;
+  opacity: 1;
 }
 
-/* line 76, ../sass/_slides.scss */
+/* line 79, ../sass/_slides.scss */
 .lowerLevel .generatedSlide {
-  display: block;
+  opacity: 1;
 }
 
-/* line 82, ../sass/_slides.scss */
+/* line 85, ../sass/_slides.scss */
 .titleSlide .depth0 {
   opacity: 1;
 }
-/* line 85, ../sass/_slides.scss */
+/* line 88, ../sass/_slides.scss */
 .titleSlide .depth0 .slideCover .sectionIcon span {
   transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -512,36 +514,36 @@ a:focus {
 /* ======================================
  * Custom classes 
  * ======================================*/
-/* line 98, ../sass/_slides.scss */
+/* line 101, ../sass/_slides.scss */
 .table {
   display: table;
 }
 
-/* line 102, ../sass/_slides.scss */
+/* line 105, ../sass/_slides.scss */
 .cell {
   display: table-cell;
 }
 
-/* line 106, ../sass/_slides.scss */
+/* line 109, ../sass/_slides.scss */
 .centerBoth {
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 111, ../sass/_slides.scss */
+/* line 114, ../sass/_slides.scss */
 .slide {
   display: block;
   border-collapse: collapse;
   padding: 0;
   border-radius: 0px;
 }
-/* line 119, ../sass/_slides.scss */
+/* line 122, ../sass/_slides.scss */
 .slide .slideWrapper {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 123, ../sass/_slides.scss */
+/* line 126, ../sass/_slides.scss */
 .slide .slideWrapper .slideCover {
   position: absolute;
   top: 0;
@@ -550,7 +552,7 @@ a:focus {
   height: 100%;
   z-index: 100;
 }
-/* line 132, ../sass/_slides.scss */
+/* line 135, ../sass/_slides.scss */
 .slide .slideWrapper .slideContent {
   position: absolute;
   top: 0;
@@ -564,16 +566,16 @@ a:focus {
 /* ======================================
  * Individual slide styles 
  * ======================================*/
-/* line 148, ../sass/_slides.scss */
+/* line 151, ../sass/_slides.scss */
 #overview {
   display: none;
 }
 
-/* line 152, ../sass/_slides.scss */
+/* line 155, ../sass/_slides.scss */
 #titleSlide {
   border-left: 3px solid #78b761;
 }
-/* line 154, ../sass/_slides.scss */
+/* line 157, ../sass/_slides.scss */
 #titleSlide .content {
   height: 300px;
   position: absolute;
@@ -581,17 +583,17 @@ a:focus {
   margin-top: -150px;
   left: 40px;
 }
-/* line 160, ../sass/_slides.scss */
+/* line 163, ../sass/_slides.scss */
 #titleSlide .content * {
   margin: 0;
 }
-/* line 163, ../sass/_slides.scss */
+/* line 166, ../sass/_slides.scss */
 #titleSlide .content h1 {
   font-size: 100px;
   color: white;
   line-height: 100%;
 }
-/* line 168, ../sass/_slides.scss */
+/* line 171, ../sass/_slides.scss */
 #titleSlide .content h2 {
   margin-top: 30px;
   font-size: 40px;
