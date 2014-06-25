@@ -2,7 +2,7 @@ var roadshow = roadshow || (roadshow = {});
 
 roadshow.App = angular.module('roadshow.App', []);
 
-roadshow.MainCtrl = function($scope, $timeout) {
+roadshow.MainCtrl = function($scope, $timeout, $sce) {
 	
 	$scope.slideWidth = 1000;
 	$scope.slideHeight = 750;
@@ -47,6 +47,7 @@ roadshow.MainCtrl = function($scope, $timeout) {
 			slide.scale = parent.childScale;
 			slide.section = parent.section;
 			slide.subTitle = parent.title;
+			slide.body = $sce.trustAsHtml(slide.body);
 		}
 		slide.depth = depth;
 		slide.x = x;

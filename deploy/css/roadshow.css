@@ -60,40 +60,35 @@ footer, header, hgroup, menu, nav, section {
 }
 
 /* line 34, ../sass/roadshow.scss */
-body {
-  line-height: 1;
-}
-
-/* line 37, ../sass/roadshow.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 40, ../sass/roadshow.scss */
+/* line 37, ../sass/roadshow.scss */
 blockquote, q {
   quotes: none;
 }
 
-/* line 44, ../sass/roadshow.scss */
+/* line 41, ../sass/roadshow.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
 }
 
-/* line 49, ../sass/roadshow.scss */
+/* line 46, ../sass/roadshow.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 54, ../sass/roadshow.scss */
+/* line 51, ../sass/roadshow.scss */
 * {
   font-family: 'Open Sans', sans-serif;
   color: white;
 }
 
-/* line 59, ../sass/roadshow.scss */
+/* line 56, ../sass/roadshow.scss */
 body {
   min-height: 740px;
   background: #d7d7d7;
@@ -105,17 +100,17 @@ body {
   background: radial-gradient(#505050, #282828);
 }
 
-/* line 71, ../sass/roadshow.scss */
+/* line 68, ../sass/roadshow.scss */
 b, strong {
   font-weight: bold;
 }
 
-/* line 72, ../sass/roadshow.scss */
+/* line 69, ../sass/roadshow.scss */
 i, em {
   font-style: italic;
 }
 
-/* line 74, ../sass/roadshow.scss */
+/* line 71, ../sass/roadshow.scss */
 a {
   color: inherit;
   text-decoration: none;
@@ -130,14 +125,14 @@ a {
   transition: 0.5s;
 }
 
-/* line 90, ../sass/roadshow.scss */
+/* line 87, ../sass/roadshow.scss */
 a:hover,
 a:focus {
   background: white;
   text-shadow: -1px -1px 2px rgba(100, 100, 100, 0.5);
 }
 
-/* line 95, ../sass/roadshow.scss */
+/* line 92, ../sass/roadshow.scss */
 .fallback-message {
   font-family: sans-serif;
   line-height: 1.3;
@@ -149,12 +144,12 @@ a:focus {
   background: #EEDC94;
 }
 
-/* line 108, ../sass/roadshow.scss */
+/* line 105, ../sass/roadshow.scss */
 .fallback-message p {
   margin-bottom: 10px;
 }
 
-/* line 112, ../sass/roadshow.scss */
+/* line 109, ../sass/roadshow.scss */
 .impress-supported .fallback-message {
   display: none;
 }
@@ -200,7 +195,7 @@ a:focus {
 
     I know, it sounds complicated ... maybe it would be easier with the code?
 */
-/* line 159, ../sass/roadshow.scss */
+/* line 156, ../sass/roadshow.scss */
 .hint {
   /*
       We hide the hint until presentation is started and from browsers not supporting
@@ -252,7 +247,7 @@ a:focus {
 /*
     Now we 'enable' the hint when presentation is initialized ...
 */
-/* line 217, ../sass/roadshow.scss */
+/* line 214, ../sass/roadshow.scss */
 .impress-enabled .hint {
   display: block;
 }
@@ -260,7 +255,7 @@ a:focus {
 /*
     ... and we will show it when the first step (with id 'bored') is active.
 */
-/* line 222, ../sass/roadshow.scss */
+/* line 219, ../sass/roadshow.scss */
 .impress-on-bored .hint {
   /*
       We remove the transparency and position the hint in its default fixed
@@ -308,12 +303,12 @@ a:focus {
 
     So use it wisely ... or don't use at all.
 */
-/* line 271, ../sass/roadshow.scss */
+/* line 268, ../sass/roadshow.scss */
 .impress-enabled {
   pointer-events: none;
 }
 
-/* line 272, ../sass/roadshow.scss */
+/* line 269, ../sass/roadshow.scss */
 .impress-enabled #impress {
   pointer-events: auto;
 }
@@ -632,7 +627,7 @@ a:focus {
 }
 /* line 227, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .table {
-  height: 100%;
+  height: 90%;
 }
 /* line 230, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .td {
@@ -663,14 +658,21 @@ a:focus {
 }
 /* line 256, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .iconColumn .sectionIcon {
-  border-width: 1px;
+  border-width: 1.5px;
   border-radius: 17px;
   width: 60px;
   height: 60px;
 }
 /* line 264, ../sass/_slides.scss */
-.slide .slideWrapper.sectionSubSlide .slideContent .subHeader {
-  width: 600px;
+.slide .slideWrapper.sectionSubSlide .slideContent .contentColumn {
+  width: 650px;
+  font-size: 18px;
+  font-weight: lighter;
+  letter-spacing: 0.05em;
+}
+/* line 269, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .slideContent .contentColumn .subHeader {
+  width: 100%;
   border-bottom: 1px solid #78b761;
   border-top: 1px solid #78b761;
   padding: 20px 0;
@@ -679,20 +681,30 @@ a:focus {
   color: #78b761;
   text-transform: uppercase;
 }
+/* line 279, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .slideContent .contentColumn p {
+  margin-bottom: 1em;
+}
+/* line 282, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .slideContent .contentColumn q {
+  display: block;
+  color: #78b761;
+  font-style: italic;
+}
 
 /* ======================================
  * Individual slide styles 
  * ======================================*/
-/* line 284, ../sass/_slides.scss */
+/* line 298, ../sass/_slides.scss */
 #overview {
   display: none;
 }
 
-/* line 288, ../sass/_slides.scss */
+/* line 302, ../sass/_slides.scss */
 #titleSlide {
   border-left: 3px solid #78b761;
 }
-/* line 290, ../sass/_slides.scss */
+/* line 304, ../sass/_slides.scss */
 #titleSlide .content {
   height: 300px;
   position: absolute;
@@ -700,17 +712,17 @@ a:focus {
   margin-top: -150px;
   left: 40px;
 }
-/* line 296, ../sass/_slides.scss */
+/* line 310, ../sass/_slides.scss */
 #titleSlide .content * {
   margin: 0;
 }
-/* line 299, ../sass/_slides.scss */
+/* line 313, ../sass/_slides.scss */
 #titleSlide .content h1 {
   font-size: 100px;
   color: white;
   line-height: 100%;
 }
-/* line 304, ../sass/_slides.scss */
+/* line 318, ../sass/_slides.scss */
 #titleSlide .content h2 {
   margin-top: 30px;
   font-size: 40px;

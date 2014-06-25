@@ -579,11 +579,14 @@
         };
         
         //MODIFIED
+        /* Return the next step */
         var getNext = function() {
-            var next = steps.indexOf( activeStep ) + 1;
-            next = next < steps.length ? steps[ next ] : steps[ 0 ];
-            
-            return next;
+        	if (activeStep) {
+            var nextIndex = steps.indexOf( activeStep ) + 1;
+            return (nextIndex < steps.length) ? steps[ nextIndex ] : steps[ 0 ];
+        	} else {
+        		return (steps.indexOf(getElementFromHash()) > -1) ? getElementFromHash() : steps[0];
+        	}
         };
         
         //MODIFIED
@@ -604,10 +607,18 @@
         // There classes can be used in CSS to style different types of steps.
         // For example the `present` class can be used to trigger some custom
         // animations when step is shown.
-        root.addEventListener("impress:init", function(){
+        root.addEventListener("impress:init", function(e){
             // STEP CLASSES
+            
+            //MODIFIED
+            var currIndex = steps.indexOf(getNext());
             steps.forEach(function (step) {
-                step.classList.add("future");
+            		var index = steps.indexOf(step);
+            		if (index < currIndex) {
+	                step.classList.add("past");
+            		} else {
+	                step.classList.add("future");
+            		}
             });
             
             root.addEventListener("impress:stepenter", function (event) {
