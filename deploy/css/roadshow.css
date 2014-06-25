@@ -98,11 +98,11 @@ body {
   min-height: 740px;
   background: #d7d7d7;
   background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(#f0f0f0), to(#bebebe));
-  background: -webkit-radial-gradient(#282828, #0a0a0a);
-  background: -moz-radial-gradient(#282828, #0a0a0a);
-  background: -ms-radial-gradient(#282828, #0a0a0a);
-  background: -o-radial-gradient(#282828, #0a0a0a);
-  background: radial-gradient(#282828, #0a0a0a);
+  background: -webkit-radial-gradient(#505050, #282828);
+  background: -moz-radial-gradient(#505050, #282828);
+  background: -ms-radial-gradient(#505050, #282828);
+  background: -o-radial-gradient(#505050, #282828);
+  background: radial-gradient(#505050, #282828);
 }
 
 /* line 71, ../sass/roadshow.scss */
@@ -398,20 +398,6 @@ a:focus {
   background-image: url("../images/Roadshow_MP_Icons_VMG.svg");
   background-size: contain;
 }
-/* line 53, ../sass/_graphics.scss */
-.sectionIcon.coverPage {
-  border-width: 12px;
-  border-radius: 100px;
-  width: 600px;
-  height: 600px;
-}
-/* line 61, ../sass/_graphics.scss */
-.sectionIcon.sectionHeader {
-  border-width: 2px;
-  border-radius: 20px;
-  width: 80px;
-  height: 80px;
-}
 
 /* ======================================
  * impress.js classes 
@@ -447,31 +433,31 @@ a:focus {
 .impress-enabled .step .slideCover, .impress-enabled .step .slideContent {
   transition: opacity 1s;
 }
-/* line 37, ../sass/_slides.scss */
-.impress-enabled .step .slideCover {
+/* line 38, ../sass/_slides.scss */
+.impress-enabled .step .sectionTitleSlide .slideCover {
   opacity: 1;
 }
-/* line 40, ../sass/_slides.scss */
-.impress-enabled .step .slideContent {
+/* line 41, ../sass/_slides.scss */
+.impress-enabled .step .sectionTitleSlide .slideContent {
   opacity: 0;
 }
 
-/* line 45, ../sass/_slides.scss */
+/* line 47, ../sass/_slides.scss */
 .impress-enabled .step.active {
   transition: opacity 1s;
   opacity: 1;
 }
-/* line 48, ../sass/_slides.scss */
-.impress-enabled .step.active .slideCover {
+/* line 51, ../sass/_slides.scss */
+.impress-enabled .step.active .sectionTitleSlide .slideCover {
   opacity: 0;
 }
-/* line 51, ../sass/_slides.scss */
-.impress-enabled .step.active .slideContent {
+/* line 54, ../sass/_slides.scss */
+.impress-enabled .step.active .sectionTitleSlide .slideContent {
   opacity: 1;
 }
 
 /* Make all slides visible on overview */
-/* line 57, ../sass/_slides.scss */
+/* line 61, ../sass/_slides.scss */
 .impress-on-overview .step {
   transition: opacity 1s;
   opacity: 1;
@@ -479,30 +465,40 @@ a:focus {
 }
 
 /* Page class is set to current slide id in event handler */
-/* line 65, ../sass/_slides.scss */
+/* line 69, ../sass/_slides.scss */
 .slideCover .sectionIcon span {
   transition: all 1s;
 }
 
-/* line 71, ../sass/_slides.scss */
+/* line 75, ../sass/_slides.scss */
 .upperLevel .generatedSlide {
   opacity: 0;
 }
-/* line 74, ../sass/_slides.scss */
+/* line 78, ../sass/_slides.scss */
 .upperLevel .depth0 {
   opacity: 1;
 }
 
-/* line 79, ../sass/_slides.scss */
+/* line 83, ../sass/_slides.scss */
 .lowerLevel .generatedSlide {
   opacity: 1;
 }
+/* line 86, ../sass/_slides.scss */
+.lowerLevel .step.past {
+  opacity: 0.25;
+  transition: opacity 0.5s;
+}
+/* line 89, ../sass/_slides.scss */
+.lowerLevel .step.past .slideCover {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
 
-/* line 85, ../sass/_slides.scss */
+/* line 97, ../sass/_slides.scss */
 .titleSlide .depth0 {
   opacity: 1;
 }
-/* line 88, ../sass/_slides.scss */
+/* line 100, ../sass/_slides.scss */
 .titleSlide .depth0 .slideCover .sectionIcon span {
   transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -514,36 +510,55 @@ a:focus {
 /* ======================================
  * Custom classes 
  * ======================================*/
-/* line 101, ../sass/_slides.scss */
+/* line 113, ../sass/_slides.scss */
 .table {
   display: table;
+  border-collapse: collapse;
 }
 
-/* line 105, ../sass/_slides.scss */
-.cell {
+/* line 118, ../sass/_slides.scss */
+.tr {
+  display: table-row;
+}
+
+/* line 122, ../sass/_slides.scss */
+.td {
   display: table-cell;
 }
 
-/* line 109, ../sass/_slides.scss */
+/* line 126, ../sass/_slides.scss */
 .centerBoth {
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 114, ../sass/_slides.scss */
+/* line 131, ../sass/_slides.scss */
 .slide {
   display: block;
   border-collapse: collapse;
   padding: 0;
   border-radius: 0px;
 }
-/* line 122, ../sass/_slides.scss */
+/* line 139, ../sass/_slides.scss */
 .slide .slideWrapper {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 126, ../sass/_slides.scss */
+/* line 143, ../sass/_slides.scss */
+.slide .slideWrapper h1 {
+  color: white;
+  line-height: 100%;
+}
+/* line 147, ../sass/_slides.scss */
+.slide .slideWrapper h2 {
+  margin-top: 30px;
+  color: #78b761;
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 0px;
+}
+/* line 154, ../sass/_slides.scss */
 .slide .slideWrapper .slideCover {
   position: absolute;
   top: 0;
@@ -552,7 +567,7 @@ a:focus {
   height: 100%;
   z-index: 100;
 }
-/* line 135, ../sass/_slides.scss */
+/* line 163, ../sass/_slides.scss */
 .slide .slideWrapper .slideContent {
   position: absolute;
   top: 0;
@@ -562,20 +577,122 @@ a:focus {
   z-index: 10;
   padding: 1em;
 }
+/* line 174, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide h1 {
+  font-size: 65px;
+}
+/* line 177, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide h2 {
+  margin-top: 30px;
+  font-size: 35px;
+}
+/* line 181, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide .table {
+  height: 70%;
+}
+/* line 184, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide .iconColumn {
+  width: 180px;
+  padding: 120px 20px;
+  border-right: 2px solid #78b761;
+}
+/* line 189, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide .contentColumn {
+  padding: 100px 0 0 50px;
+}
+/* line 192, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide .bottomSpacer {
+  clear: both;
+  width: 100%;
+  height: 30%;
+}
+/* line 198, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide .slideCover .sectionIcon {
+  border-width: 12px;
+  border-radius: 100px;
+  width: 600px;
+  height: 600px;
+}
+/* line 207, ../sass/_slides.scss */
+.slide .slideWrapper.sectionTitleSlide .slideContent .iconColumn .sectionIcon {
+  border-width: 2px;
+  border-radius: 32px;
+  width: 120px;
+  height: 120px;
+}
+/* line 219, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+}
+/* line 223, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide h2 {
+  margin-top: 30px;
+  font-size: 28px;
+}
+/* line 227, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .table {
+  height: 100%;
+}
+/* line 230, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .td {
+  vertical-align: top;
+}
+/* line 233, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .iconColumn {
+  border-right: 3px solid #78b761;
+}
+/* line 236, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .iconColumn .content {
+  padding: 80px 50px;
+}
+/* line 240, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .contentColumn {
+  width: 100%;
+}
+/* line 242, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .contentColumn .content {
+  padding: 40px 0 0 50px;
+}
+/* line 247, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .slideCover .sectionIcon {
+  border-width: 12px;
+  border-radius: 100px;
+  width: 600px;
+  height: 600px;
+}
+/* line 256, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .slideContent .iconColumn .sectionIcon {
+  border-width: 1px;
+  border-radius: 17px;
+  width: 60px;
+  height: 60px;
+}
+/* line 264, ../sass/_slides.scss */
+.slide .slideWrapper.sectionSubSlide .slideContent .subHeader {
+  width: 600px;
+  border-bottom: 1px solid #78b761;
+  border-top: 1px solid #78b761;
+  padding: 20px 0;
+  margin: 20px 0;
+  font-size: 28px;
+  color: #78b761;
+  text-transform: uppercase;
+}
 
 /* ======================================
  * Individual slide styles 
  * ======================================*/
-/* line 151, ../sass/_slides.scss */
+/* line 284, ../sass/_slides.scss */
 #overview {
   display: none;
 }
 
-/* line 155, ../sass/_slides.scss */
+/* line 288, ../sass/_slides.scss */
 #titleSlide {
   border-left: 3px solid #78b761;
 }
-/* line 157, ../sass/_slides.scss */
+/* line 290, ../sass/_slides.scss */
 #titleSlide .content {
   height: 300px;
   position: absolute;
@@ -583,17 +700,17 @@ a:focus {
   margin-top: -150px;
   left: 40px;
 }
-/* line 163, ../sass/_slides.scss */
+/* line 296, ../sass/_slides.scss */
 #titleSlide .content * {
   margin: 0;
 }
-/* line 166, ../sass/_slides.scss */
+/* line 299, ../sass/_slides.scss */
 #titleSlide .content h1 {
   font-size: 100px;
   color: white;
   line-height: 100%;
 }
-/* line 171, ../sass/_slides.scss */
+/* line 304, ../sass/_slides.scss */
 #titleSlide .content h2 {
   margin-top: 30px;
   font-size: 40px;

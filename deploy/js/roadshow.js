@@ -45,6 +45,8 @@ roadshow.MainCtrl = function($scope, $timeout) {
 			slide.w = parent.childWidth;
 			slide.h = parent.childHeight;
 			slide.scale = parent.childScale;
+			slide.section = parent.section;
+			slide.subTitle = parent.title;
 		}
 		slide.depth = depth;
 		slide.x = x;
@@ -115,7 +117,11 @@ roadshow.MainCtrl = function($scope, $timeout) {
 	};
 	
 	$scope.getSlideTemplate = function(slide) {
-		return 'partials/slide1.html';
+		if (slide.template) {
+			return 'partials/' + slide.template + '.html';
+		} else {
+			return 'partials/slide_default.html';
+		}
 	};
 	
 	$scope.getSlideId = function(slide) {

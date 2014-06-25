@@ -1,25 +1,28 @@
 var slideMap = [
-	{	id: 'vmg',
+	{	id: 'vmg_title',
+		section: 'vmg',
+		template: 'slide_section_title',
+		title: 'Video & Motion Graphics',
+		geography: 'North America',
 		children : [
-			{	id: '1.1',
-				children : [
-					{	id: '1.1.1',
-						children : [
-							{id: '1.1.1.1'},
-							{id: '1.1.1.2'},
-							{id: '1.1.1.3'},
-							{id: '1.1.1.4'}
-						]
-					},
-					{id: '1.1.2'},
-					{id: '1.1.3'}
-				]
+			{	id: 'vmg_whatwedo',
+				title: 'What We Do',
+				body: '<p>This nimble and talented crew of designers and production managers, handles talking-head interviews, case study projects, motion graphics, and large-scale productions combining scripts, actors, 3D graphics, animation, audio, and special effects.</p> <q>» We refuse to settle for the expected when a more creative solution is possible.</q>'
 			},
-			{id: '1.2'},
-			{id: '1.3'}
+			{	id: 'vmg_whoweare',
+				title: 'Who We Are',
+			},
+			{	id: 'vmg_whatwevedone',
+				title: 'What We\'ve Done',
+			},
+			{	id: 'vmg_workwithus',
+				title: 'Work With Us',
+			}
 		]
 	},
-	{	id: 'creative',
+	{	id: 'creative_title',
+		section: 'creative',
+		template: 'slide_section_title',
 		children : [
 			{	id: '2.1',},
 			{	id: '2.2',},
@@ -31,35 +34,45 @@ var slideMap = [
 			}
 		]
 	},
-	{	id: 'mpp',
+	{	id: 'mpp_title',
+		section: 'mpp',
+		template: 'slide_section_title',
 		children : {
 			'3.1' : {},
 			'3.2' : {},
 			'3.3' : {}
 		}
 	},
-	{	id: 'dc',
+	{	id: 'dc_title',
+		section: 'dc',
+		template: 'slide_section_title',
 		children : {
 			'4.1' : {},
 			'4.2' : {},
 			'4.3' : {}
 		}
 	},
-	{	id: 'events',
+	{	id: 'events_title',
+		section: 'events',
+		template: 'slide_section_title',
 		children : {
 			'5.1' : {},
 			'5.2' : {},
 			'5.3' : {}
 		}
 	},
-	{	id: 'pm',
+	{	id: 'pm_title',
+		section: 'pm',
+		template: 'slide_section_title',
 		children : {
 			'6.1' : {},
 			'6.2' : {},
 			'6.3' : {}
 		}
 	},
-	{	id: 'k20cm',
+	{	id: 'k20cm_title',
+		section: 'k20cm',
+		template: 'slide_section_title',
 		children : {
 			'7.1' : {},
 			'7.2' : {},
