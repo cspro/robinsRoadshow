@@ -478,22 +478,17 @@ a:focus {
 .lowerLevel .generatedSlide {
   opacity: 1;
 }
-/* line 86, ../sass/_slides.scss */
-.lowerLevel .step.past {
-  opacity: 0.25;
-  transition: opacity 0.5s;
-}
-/* line 89, ../sass/_slides.scss */
+/* line 87, ../sass/_slides.scss */
 .lowerLevel .step.past .slideCover {
   transition: opacity 0.5s;
   opacity: 0;
 }
 
-/* line 97, ../sass/_slides.scss */
+/* line 95, ../sass/_slides.scss */
 .titleSlide .depth0 {
   opacity: 1;
 }
-/* line 100, ../sass/_slides.scss */
+/* line 98, ../sass/_slides.scss */
 .titleSlide .depth0 .slideCover .sectionIcon span {
   transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
@@ -505,47 +500,47 @@ a:focus {
 /* ======================================
  * Custom classes 
  * ======================================*/
-/* line 113, ../sass/_slides.scss */
+/* line 111, ../sass/_slides.scss */
 .table {
   display: table;
   border-collapse: collapse;
 }
 
-/* line 118, ../sass/_slides.scss */
+/* line 116, ../sass/_slides.scss */
 .tr {
   display: table-row;
 }
 
-/* line 122, ../sass/_slides.scss */
+/* line 120, ../sass/_slides.scss */
 .td {
   display: table-cell;
 }
 
-/* line 126, ../sass/_slides.scss */
+/* line 124, ../sass/_slides.scss */
 .centerBoth {
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 131, ../sass/_slides.scss */
+/* line 129, ../sass/_slides.scss */
 .slide {
   display: block;
   border-collapse: collapse;
   padding: 0;
   border-radius: 0px;
 }
-/* line 139, ../sass/_slides.scss */
+/* line 137, ../sass/_slides.scss */
 .slide .slideWrapper {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 143, ../sass/_slides.scss */
+/* line 141, ../sass/_slides.scss */
 .slide .slideWrapper h1 {
   color: white;
   line-height: 100%;
 }
-/* line 147, ../sass/_slides.scss */
+/* line 145, ../sass/_slides.scss */
 .slide .slideWrapper h2 {
   margin-top: 30px;
   color: #78b761;
@@ -553,7 +548,7 @@ a:focus {
   font-weight: normal;
   letter-spacing: 0px;
 }
-/* line 154, ../sass/_slides.scss */
+/* line 152, ../sass/_slides.scss */
 .slide .slideWrapper .slideCover {
   position: absolute;
   top: 0;
@@ -562,7 +557,7 @@ a:focus {
   height: 100%;
   z-index: 100;
 }
-/* line 163, ../sass/_slides.scss */
+/* line 161, ../sass/_slides.scss */
 .slide .slideWrapper .slideContent {
   position: absolute;
   top: 0;
@@ -572,105 +567,105 @@ a:focus {
   z-index: 10;
   padding: 1em;
 }
-/* line 174, ../sass/_slides.scss */
+/* line 172, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide h1 {
   font-size: 65px;
 }
-/* line 177, ../sass/_slides.scss */
+/* line 175, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide h2 {
   margin-top: 30px;
   font-size: 35px;
 }
-/* line 181, ../sass/_slides.scss */
+/* line 179, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .table {
   height: 70%;
 }
-/* line 184, ../sass/_slides.scss */
+/* line 182, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .iconColumn {
   width: 180px;
   padding: 120px 20px;
   border-right: 2px solid #78b761;
 }
-/* line 189, ../sass/_slides.scss */
+/* line 187, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .contentColumn {
   padding: 100px 0 0 50px;
 }
-/* line 192, ../sass/_slides.scss */
+/* line 190, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .bottomSpacer {
   clear: both;
   width: 100%;
   height: 30%;
 }
-/* line 198, ../sass/_slides.scss */
+/* line 196, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .slideCover .sectionIcon {
   border-width: 12px;
   border-radius: 100px;
   width: 600px;
   height: 600px;
 }
-/* line 207, ../sass/_slides.scss */
+/* line 205, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .slideContent .iconColumn .sectionIcon {
   border-width: 2px;
   border-radius: 32px;
   width: 120px;
   height: 120px;
 }
-/* line 219, ../sass/_slides.scss */
+/* line 217, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide h1 {
   font-size: 50px;
   text-transform: uppercase;
 }
-/* line 223, ../sass/_slides.scss */
+/* line 221, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide h2 {
   margin-top: 30px;
   font-size: 28px;
 }
-/* line 227, ../sass/_slides.scss */
+/* line 225, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .table {
   height: 90%;
 }
-/* line 230, ../sass/_slides.scss */
+/* line 228, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .td {
   vertical-align: top;
 }
-/* line 233, ../sass/_slides.scss */
+/* line 231, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .iconColumn {
   border-right: 3px solid #78b761;
 }
-/* line 236, ../sass/_slides.scss */
+/* line 234, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .iconColumn .content {
   padding: 80px 50px;
 }
-/* line 240, ../sass/_slides.scss */
+/* line 238, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .contentColumn {
   width: 100%;
 }
-/* line 242, ../sass/_slides.scss */
+/* line 240, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .contentColumn .content {
   padding: 40px 0 0 50px;
 }
-/* line 247, ../sass/_slides.scss */
+/* line 245, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideCover .sectionIcon {
   border-width: 12px;
   border-radius: 100px;
   width: 600px;
   height: 600px;
 }
-/* line 256, ../sass/_slides.scss */
+/* line 254, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .iconColumn .sectionIcon {
   border-width: 1.5px;
   border-radius: 17px;
   width: 60px;
   height: 60px;
 }
-/* line 264, ../sass/_slides.scss */
+/* line 262, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn {
   width: 650px;
   font-size: 18px;
   font-weight: lighter;
   letter-spacing: 0.05em;
 }
-/* line 269, ../sass/_slides.scss */
+/* line 267, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn .subHeader {
   width: 100%;
   border-bottom: 1px solid #78b761;
@@ -681,11 +676,11 @@ a:focus {
   color: #78b761;
   text-transform: uppercase;
 }
-/* line 279, ../sass/_slides.scss */
+/* line 277, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn p {
   margin-bottom: 1em;
 }
-/* line 282, ../sass/_slides.scss */
+/* line 280, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn q {
   display: block;
   color: #78b761;
@@ -695,16 +690,16 @@ a:focus {
 /* ======================================
  * Individual slide styles 
  * ======================================*/
-/* line 298, ../sass/_slides.scss */
+/* line 296, ../sass/_slides.scss */
 #overview {
   display: none;
 }
 
-/* line 302, ../sass/_slides.scss */
+/* line 300, ../sass/_slides.scss */
 #titleSlide {
   border-left: 3px solid #78b761;
 }
-/* line 304, ../sass/_slides.scss */
+/* line 302, ../sass/_slides.scss */
 #titleSlide .content {
   height: 300px;
   position: absolute;
@@ -712,17 +707,17 @@ a:focus {
   margin-top: -150px;
   left: 40px;
 }
-/* line 310, ../sass/_slides.scss */
+/* line 308, ../sass/_slides.scss */
 #titleSlide .content * {
   margin: 0;
 }
-/* line 313, ../sass/_slides.scss */
+/* line 311, ../sass/_slides.scss */
 #titleSlide .content h1 {
   font-size: 100px;
   color: white;
   line-height: 100%;
 }
-/* line 318, ../sass/_slides.scss */
+/* line 316, ../sass/_slides.scss */
 #titleSlide .content h2 {
   margin-top: 30px;
   font-size: 40px;
