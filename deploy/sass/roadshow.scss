@@ -1,9 +1,5 @@
 @import "opensans";
-
-$primaryTextColor: #ffffff;
-$primaryAccentColor: #78b761;
-$bgColor1: rgb(80, 80, 80);
-$bgColor2: rgb(40, 40, 40);
+@import "variables";
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -57,7 +53,7 @@ body {
     min-height: 740px;
 
     background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(40, 40, 40)), to(rgb(80, 80, 80)));
     background: -webkit-radial-gradient($bgColor1, $bgColor2);
     background:    -moz-radial-gradient($bgColor1, $bgColor2);
     background:     -ms-radial-gradient($bgColor1, $bgColor2);
@@ -72,9 +68,10 @@ a {
     color: inherit;
     text-decoration: none;
     padding: 0 0.1em;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0);
     text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
     border-radius: 0.2em;
+    border-bottom: 1px dotted $primaryAccentColor;
 
     -webkit-transition: 0.5s;
     -moz-transition:    0.5s;
@@ -85,7 +82,8 @@ a {
 
 a:hover,
 a:focus {
-    background: rgba(255,255,255,1);
+    border-bottom: 1px solid $primaryAccentColor;
+    background: rgba(255,255,255,0.25);
     text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
 }
 

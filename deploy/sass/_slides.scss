@@ -256,7 +256,6 @@
             border-radius: 17px;
             width: 60px;
             height: 60px;
-            
           }
         }
         .contentColumn {
@@ -277,10 +276,10 @@
           p {
             margin-bottom: 1em;
           }
-          q {
-            display: block;
+          em {
             color: $primaryAccentColor;
             font-style: italic;
+            font-weight: bold;
           }
         }
       }
@@ -320,6 +319,43 @@
       text-transform: uppercase;
       font-weight: normal;
       letter-spacing: 6px;
+    }
+  }
+}
+
+.whoWeAreContent {
+  .headshotColumn {
+    width: $headshotSize;
+    text-align: center;
+    .leadName {
+      margin-top: 1em;
+      display: block;
+      color: $primaryAccentColor;
+    }
+    .leadTitle {
+      margin-top: 0em;
+      font-size: 0.85em;
+      font-weight: bold;
+      display: block;
+      color: $primaryTextColor;
+    }
+  }
+}
+
+.workWithUsContent {
+  .neoLink {
+    width: 100px;
+    margin-top: 2em;
+    text-align: center;
+    .contentIcon {
+      border-width: 1.5px;
+      border-radius: 17px;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 0.5em;
+    }
+    span {
+      color: $primaryAccentColor;
     }
   }
 }

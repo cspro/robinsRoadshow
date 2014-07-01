@@ -5,9 +5,8 @@
 				<div class="td iconColumn" ng-include="'partials/icon_column.html'"></div>
 				<div class="td contentColumn">
 					<div class="content">
-						<h1>{{slide.title}}</h1>
-						<div class="subHeader">{{slide.subTitle}}</div>
-						<div ng-bind-html="slide.body"></div>
+						<div ng-include="'partials/content_header.html'"></div>
+						<div ng-include="'partials/' + slide.contentTemplate + '.html'"></div>
 					</div>
 				</div>
 			</div>

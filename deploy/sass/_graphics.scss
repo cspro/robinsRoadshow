@@ -1,4 +1,4 @@
-.sectionIcon {
+.sectionIcon, .contentIcon {
   display: inline-block;
   border-style: solid;
   border-color: $primaryTextColor;
@@ -51,3 +51,42 @@
     }
   }
 }
+
+.headshotWrapper {
+  display: inline-block;
+  width: $headshotSize;
+  height: $headshotSize;
+  border: 1px solid $primaryTextColor;
+  border-radius: $headshotSize*0.27;
+  padding: 4px;
+}
+.headshot {
+  display: inline-block;
+  width: $headshotSize;
+  height: $headshotSize;
+  border-radius: $headshotSize*0.25;
+  overflow: hidden;
+  background: url('../images/content/headshot_sprite.png') no-repeat;
+  &.christine_curtin {
+    background-position: -$headshotSize*0  0px; 
+  }                                   
+  &.eric_kome {                       
+    background-position: -$headshotSize*1  0px; 
+  }                                   
+  &.esther_podany {                   
+    background-position: -$headshotSize*2  0px; 
+  }                                   
+  &.gary_gnade {                      
+    background-position: -$headshotSize*3  0px; 
+  }                                   
+  &.katie_finney {                    
+    background-position: -$headshotSize*4  0px; 
+  }                                   
+  &.kevin_young {                     
+    background-position: -$headshotSize*5  0px; 
+  }                                   
+  &.michelle_maloof {                 
+    background-position: -$headshotSize*6  0px; 
+  }
+}
+
