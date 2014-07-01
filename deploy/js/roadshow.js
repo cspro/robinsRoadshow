@@ -1,8 +1,8 @@
 var roadshow = roadshow || (roadshow = {});
 
-roadshow.App = angular.module('roadshow.App', []);
+roadshow.App = angular.module('roadshow.App', ['ngDialog']);
 
-roadshow.MainCtrl = function($scope, $timeout, $sce) {
+roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	
 	$scope.slideWidth = 1000;
 	$scope.slideHeight = 750;
@@ -138,13 +138,17 @@ roadshow.MainCtrl = function($scope, $timeout, $sce) {
 	
 	$scope.onStepChange = function(e) {
 		// debugger;
-		console.log('onStepChange. Event type: ' + e.type + '. startingStep: ' + e.detail.startingStep.id + '. endingStep: ' + e.detail.endingStep.id);
-		var endingId = e.detail.endingStep.id;
-		$scope.currSlide = endingId;
-		if (endingId == 'overviewSlide' || endingId == 'titleSlide') {
-			$scope.bodyClass = 'upperLevel';
-		} else {
-			$scope.bodyClass = 'lowerLevel';
+		try {
+			console.log('onStepChange. Event type: ' + e.type + '. startingStep: ' + e.detail.startingStep.id + '. endingStep: ' + e.detail.endingStep.id);
+			var endingId = e.detail.endingStep.id;
+			$scope.currSlide = endingId;
+			if (endingId == 'overviewSlide' || endingId == 'titleSlide') {
+				$scope.bodyClass = 'upperLevel';
+			} else {
+				$scope.bodyClass = 'lowerLevel';
+			}
+		} catch(err) {
+			console.log('Error in onStepChange: ' + err);
 		}
 		$scope.$apply();
 	};
@@ -164,6 +168,27 @@ roadshow.MainCtrl = function($scope, $timeout, $sce) {
 	$timeout(function() {
 		$scope.delayedInit();
 	}, 500);
+	
+	$scope.onExampleClick = function(e, id) {
+		e.stopPropagation();
+		e.preventDefault();
+		$scope.dialogShown = true;
+	};
+
+	var launchModal = function(item) {
+		$scope.modalContent = "Variable modal content.";
+		var content = $compile("<div ng-include=" + item.template + "></div>");
+		ngDialog.open({template: item.template});
+	};
+	
+	$scope.onContentItemClick = function(e, item) {
+		e.stopPropagation();
+		e.preventDefault();
+		if (item && item.template) {
+			launchModal(item);
+		}
+	};
+	
 };
 
 roadshow.App.directive('stepListen', function() {
@@ -186,16 +211,6 @@ roadshow.App.directive('impressInit', function() {
 });
 
 
-/*
-$(document).ready(function() {
-    $(document).on('impress:stepenter', function(e) {
-    	debugger;
-        var currentSlide = $(e.target).attr('id');
-             if (currentSlide === 'slide2') {
-            setTimeout(api.next, 2000);
-        } else if (currentSlide === 'slide3') {
-            window.location = 'http://www.google.com/';
-        }
-    });
+//
+$(document).ready(function(){
 });
-*/

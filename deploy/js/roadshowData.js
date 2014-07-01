@@ -8,7 +8,14 @@ var slideMap = [
 			{	id: 'vmg_whatwedo',
 				title: 'What We Do',
 				contentTemplate: 'content_what_we_do',
-				bodyCopy: '<p>This nimble and talented crew of designers and production managers handles talking-head interviews, case study projects, motion graphics, and large-scale productions combining scripts, actors, 3D graphics, animation, audio, and special effects.</p> <p><em>» We refuse to settle for the expected when a more creative solution is possible.</em></p>'
+				bodyCopy: '<p><em>» We refuse to settle for the expected when a more creative solution is possible.</em></p>',
+				gridItems: [
+					{src:'vmg/what_we_do_1.png', template:'partials/modal_content.html'},
+					{src:'vmg/what_we_do_2.png', template:'partials/modal_content.html'}, 
+					{src:'vmg/what_we_do_1.png', template:'partials/modal_content.html'},
+					{src:'vmg/what_we_do_2.png', template:'partials/modal_content.html'}, 
+					{src:'vmg/what_we_do_3.png', template:'partials/modal_content.html'}
+				]
 			},
 			{	id: 'vmg_whoweare',
 				title: 'Who We Are',

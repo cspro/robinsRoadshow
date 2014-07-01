@@ -283,10 +283,98 @@
           }
         }
       }
-
     }
   }
 }
+
+.sectionIcon, .contentIcon, {
+  display: inline-block;
+  border-style: solid;
+  border-color: $primaryTextColor;
+  text-align: center;
+  vertical-align: middle;
+  span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: $primaryAccentColor;
+    &.icon-creative {
+      background-image: url('../images/Roadshow_MP_Icons_Creative.svg');
+      background-size: contain;
+    }
+    &.icon-avatar {
+      background-image: url('../images/Roadshow_MP_Icons_Avatar.svg');
+      background-size: contain;
+    }
+    &.icon-dc {
+      background-image: url('../images/Roadshow_MP_Icons_DC.svg');
+      background-size: contain;
+    }
+    &.icon-events {
+      background-image: url('../images/Roadshow_MP_Icons_Events.svg');
+      background-size: contain;
+    }
+    &.icon-k20cm {
+      background-image: url('../images/Roadshow_MP_Icons_K20CM.svg');
+      background-size: contain;
+    }
+    &.icon-mpp {
+      background-image: url('../images/Roadshow_MP_Icons_MPP.svg');
+      background-size: contain;
+    }
+    &.icon-neo {
+      background-image: url('../images/Roadshow_MP_Icons_Neo.svg');
+      background-size: contain;
+    }
+    &.icon-org {
+      background-image: url('../images/Roadshow_MP_Icons_Org.svg');
+      background-size: contain;
+    }
+    &.icon-pm {
+      background-image: url('../images/Roadshow_MP_Icons_PM.svg');
+      background-size: contain;
+    }
+    &.icon-vmg {
+      background-image: url('../images/Roadshow_MP_Icons_VMG.svg');
+      background-size: contain;
+    }
+  }
+}
+
+.gridItemWrapper {
+  display: inline-block;
+  width: $gridItemSize;
+  height: $gridItemSize;
+  border: 1.75px solid $primaryTextColor;
+  border-radius: $gridItemSize*0.29;
+  padding: 4px;
+  .gridItem {
+    display: inline-block;
+    width: $gridItemSize;
+    height: $gridItemSize;
+    border-radius: $gridItemSize*0.25;
+    overflow: hidden;
+    span, a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      color: $primaryAccentColor;
+      background-size: contain;
+    }
+    a {
+      cursor: pointer;
+    }
+  }
+}
+
+.grid {
+  .gridItemWrapper {
+    margin: 0 1em 1em 0;
+  }
+}
+
+
+
 
 /* ======================================
  * Individual slide styles 
@@ -325,7 +413,7 @@
 
 .whoWeAreContent {
   .headshotColumn {
-    width: $headshotSize;
+    width: $gridItemSize;
     text-align: center;
     .leadName {
       margin-top: 1em;
@@ -338,6 +426,32 @@
       font-weight: bold;
       display: block;
       color: $primaryTextColor;
+    }
+    .gridItemWrapper {
+      .gridItem {
+        background: url('../images/content/headshot_sprite.png') no-repeat;
+        &.christine_curtin {
+          background-position: -$gridItemSize*0  0px; 
+        }                                   
+        &.eric_kome {                       
+          background-position: -$gridItemSize*1  0px; 
+        }                                   
+        &.esther_podany {                   
+          background-position: -$gridItemSize*2  0px; 
+        }                                   
+        &.gary_gnade {                      
+          background-position: -$gridItemSize*3  0px; 
+        }                                   
+        &.katie_finney {                    
+          background-position: -$gridItemSize*4  0px; 
+        }                                   
+        &.kevin_young {                     
+          background-position: -$gridItemSize*5  0px; 
+        }                                   
+        &.michelle_maloof {                 
+          background-position: -$gridItemSize*6  0px; 
+        }
+      }
     }
   }
 }

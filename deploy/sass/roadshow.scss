@@ -59,6 +59,8 @@ body {
     background:     -ms-radial-gradient($bgColor1, $bgColor2);
     background:      -o-radial-gradient($bgColor1, $bgColor2);
     background:         radial-gradient($bgColor1, $bgColor2);
+    //FIXME: Replace with svg gradient?
+    background: $bgColor2;
 }
 
 b, strong { font-weight: bold }
@@ -283,6 +285,14 @@ a:focus {
     for you.
 */
 
-@import "graphics";
 @import "slides";
+
+.impress-wrapper * {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.ngdialog {
+  pointer-events: auto;
+}
 

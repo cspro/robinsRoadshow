@@ -1,3 +1,10 @@
 <div class="whatWeDoContent">
 	<div ng-bind-html="slide.bodyCopy"></div>
+	<div class="grid" ng-show="slide.gridItems">
+		<div class="gridItemWrapper" ng-repeat="item in slide.gridItems">
+			<div class="gridItem">
+				<a ng-click="onContentItemClick($event, item)" style="background-image: url({{'images/content/' + item.src}})"></a>
+			</div>
+		</div>
+	</div>
 </div>
