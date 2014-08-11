@@ -1,12 +1,31 @@
-<div class="whoWeAreContent table">
-	<div class="tr">
-		<div class="td headshotColumn">
-			<div class="gridItemWrapper">
-				<span class="gridItem {{slide.lead.id}}"></span>
+<div class="whoWeAreContent"> 
+	<div class="table">
+		<div class="tr">
+			<div class="td headshotColumn">
+				<div class="gridItemWrapper">
+					<div class="gridItemBorder">
+						<span class="gridItem {{slide.lead.id}}"></span>
+					</div>
+				</div>
+				<span class="caption">{{slide.lead.name}}</span>
+				<span class="subCaption">{{slide.lead.title}}</span>
 			</div>
-			<span class="leadName">{{slide.lead.name}}</span>
-			<span class="leadTitle">{{slide.lead.title}}</span>
+			<div class="td plusColumn" ng-show="slide.directReports">+</div>
+			<div class="td directReportsColumn" ng-show="slide.directReports">
+				<div class="directReport" ng-repeat="item in slide.directReports">
+					<div class="gridItemWrapper">
+						<div class="gridItemBorder" ng-hide="item.spacer">
+							<img class="gridItem" src="{{item.src}}" alt="{{item.name}}"/>
+						</div>
+						<div class="gridItemSpacer" ng-show="item.spacer"></div>
+					</div>
+				</div>
+			</div>
+			<div class="td orgChartColumn"></div>
 		</div>
-		<div class="td"></div>
+	</div>
+	<div class="orgChartLink">
+		<a class="contentIcon" href="{{slide.orgChart.url}}" target="_blank"><span class="icon-org"></span></a>
+		<span class="caption">Org Chart</span>
 	</div>
 </div>

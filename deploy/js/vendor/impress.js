@@ -558,7 +558,10 @@
         var prev = function () {
             var prev = steps.indexOf( activeStep ) - 1;
             prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ];
-            
+            var dur = config.transitionDuration;
+            if (prev && prev.attributes && prev.attributes['data-transition-prev']) {
+            	dur = parseInt(prev.attributes['data-transition-prev'].value);
+            }
             return goto(prev);
         };
         
@@ -566,7 +569,6 @@
         var getPrev = function () {
             var prev = steps.indexOf( activeStep ) - 1;
             prev = prev >= 0 ? steps[ prev ] : steps[ steps.length-1 ];
-            
             return prev;
         };
         
@@ -574,8 +576,12 @@
         var next = function () {
             var next = steps.indexOf( activeStep ) + 1;
             next = next < steps.length ? steps[ next ] : steps[ 0 ];
-            
-            return goto(next);
+            var dur = config.transitionDuration;
+            // Looking ahead to next slide, so we need transition from previous
+            if (next && next.attributes && next.attributes['data-transition-prev']) {
+            	dur = parseInt(next.attributes['data-transition-prev'].value);
+            }
+            return goto(next, dur);
         };
         
         //MODIFIED

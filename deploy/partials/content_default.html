@@ -1,0 +1,14 @@
+<div class="defaultContent">
+	<div ng-bind-html="slide.bodyCopy"></div>
+	<div class="grid" ng-show="slide.gridItems">
+		<div class="gridItemWrapper" ng-repeat="item in slide.gridItems">
+			<div class="gridItemBorder" ng-hide="item.spacer">
+				<div class="gridItem">
+					<a ng-click="onContentItemClick($event, item)" style="background-image: url('{{item.src}}')"></a><br>
+				</div>
+			</div>
+			<div class="gridItemSpacer" ng-show="item.spacer"></div>
+			<span class="gridItemCaption" ng-show="item.caption">{{item.caption}}</span>
+		</div>
+	</div>
+</div>

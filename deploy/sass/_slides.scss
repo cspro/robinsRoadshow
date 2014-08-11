@@ -35,26 +35,20 @@
     transition: opacity 1s;
   }
   .sectionTitleSlide {
+    transition: opacity 1s;
     .slideCover {
-      opacity: 1;
+      // opacity: 1;
     }
     .slideContent {
-      opacity: 0;
+      // opacity: 0;
     }
   }
 }
 
-.impress-enabled .step.active { 
+.impress-enabled .step.active {
+  pointer-events: auto; 
   transition: opacity 1s;
   opacity: 1;
-  .sectionTitleSlide {
-    .slideCover {
-      opacity: 0;
-    }
-    .slideContent {
-      opacity: 1;
-    }
-  }
 }
 
 /* Make all slides visible on overview */
@@ -66,40 +60,50 @@
 
 /* Page class is set to current slide id in event handler */
 .slideCover {
+  transition: opacity 0.5s;
   .sectionIcon span {
     transition: all 1s;
   }
 }
 
-.upperLevel {
-  .generatedSlide {
-    opacity: 0;
-  }
-  .depth0 {
-    opacity: 1;
-  }
-}
-.lowerLevel {
+/* Title level slides are always opaque */
+.titleSlideLevel {
+  opacity: 1 !important;
   .generatedSlide {
     opacity: 1;
-  }
-  .step.past {
     .slideCover {
-      transition: opacity 0.5s;
+      opacity: 1;
+    }
+    .slideContent {
       opacity: 0;
     }
   }
 }
+.generatedTitleSlideLevel {
+  .step.past, .step.future {
+    opacity: 0.3;
+  }
+}
+.generatedSubSlideLevel {
+  .sectionTitleSlide {
+  }
+}
 
-.titleSlide {
-  .depth0 {
-    opacity: 1;
-    .slideCover {
-      .sectionIcon span {
-        transform:          rotate(-90deg);
-        -ms-transform:      rotate(-90deg); /* IE 9 */
-        -webkit-transform:  rotate(-90deg); /* Opera, Chrome, and Safari */
-      }
+// Dynamic opacity classes
+.transparent {
+  opacity: 0 !important;
+}
+.opaque {
+  opacity: 1 !important;
+}
+
+// Icon rotation
+.mainTitleSlide {
+  .slideCover {
+    .sectionIcon span {
+      transform:          rotate(-90deg);
+      -ms-transform:      rotate(-90deg); /* IE 9 */
+      -webkit-transform:  rotate(-90deg); /* Opera, Chrome, and Safari */
     }
   }
 } 
@@ -338,32 +342,55 @@
       background-image: url('../images/Roadshow_MP_Icons_VMG.svg');
       background-size: contain;
     }
+    &.icon-marcomm {
+      background-image: url('../images/Roadshow_MP_Icons_MarketingPrograms.svg');
+      background-size: contain;
+    }
   }
 }
 
 .gridItemWrapper {
   display: inline-block;
-  width: $gridItemSize;
-  height: $gridItemSize;
-  border: 1.75px solid $primaryTextColor;
-  border-radius: $gridItemSize*0.29;
-  padding: 4px;
-  .gridItem {
+  vertical-align: top;
+  .gridItemSpacer {
     display: inline-block;
-    width: $gridItemSize;
-    height: $gridItemSize;
-    border-radius: $gridItemSize*0.25;
-    overflow: hidden;
-    span, a {
+    width: $gridItemSizeLg;
+    height: $gridItemSizeLg;
+  }
+  .gridItemBorder {
+    display: inline-block;
+    width: $gridItemSizeLg;
+    height: $gridItemSizeLg;
+    border: 1.75px solid $primaryTextColor;
+    border-radius: $gridItemSizeLg*0.29;
+    padding: 4px;
+    .gridItem {
       display: inline-block;
-      width: 100%;
-      height: 100%;
-      color: $primaryAccentColor;
-      background-size: contain;
+      width: $gridItemSizeLg;
+      height: $gridItemSizeLg;
+      border-radius: $gridItemSizeLg*0.25;
+      overflow: hidden;
+      span, a, img {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        color: $primaryAccentColor;
+        background-size: contain;
+      }
+      a {
+        cursor: pointer;
+      }
     }
-    a {
-      cursor: pointer;
-    }
+  }
+  .gridItemCaption {
+    display: block;
+    font-weight: bold;
+    width: $gridItemSizeLg;
+    padding: 4px;
+    clear: both;
+    text-align: center;
+    font-size: 80%;
+    color: $primaryAccentColor;
   }
 }
 
@@ -373,7 +400,38 @@
   }
 }
 
+.neoLink, .orgChartLink {
+  display: block;
+  width: $gridItemSizeLg + 16px;
+  height: $gridItemSizeLg + 16px;
+  margin-top: 2em;
+  text-align: center;
+  padding: 4px;
+  cursor: pointer;
+  .contentIcon {
+    border-width: 1.5px;
+    border-radius: $gridItemSizeLg*0.29;
+    width: $gridItemSizeLg;
+    height: $gridItemSizeLg;
+    margin-bottom: 0.5em;
+  }
+  span {
+    color: $primaryAccentColor;
+  }
+}
 
+.caption {
+  margin-top: 0.5em;
+  display: block;
+  color: $primaryAccentColor;
+}
+.subCaption {
+  margin-top: 0em;
+  font-size: 0.85em;
+  font-weight: bold;
+  display: block;
+  color: $primaryTextColor;
+}
 
 
 /* ======================================
@@ -384,17 +442,17 @@
   display: none 
 }
 
-#titleSlide {
+#mainTitleSlide {
   border-left: 3px solid $primaryAccentColor;
   .content {
-    height: 300px;
     position: absolute;
     top: 50%;
-    margin-top: -150px;
+    height: 300px;
     left: 40px;
+    margin-top: -150px;
     * {
       margin: 0;
-        }
+    }
     h1 {
       font-size: 100px;
       color: $primaryTextColor;
@@ -411,45 +469,98 @@
   }
 }
 
+#marcommWhatWeDo {
+  border: 3px solid $primaryAccentColor;
+  .content {
+    height: 300px;
+    left: 40px;
+    margin-top: -150px;
+  }  
+}
+
+#marcommWhoWeAre {
+  border: 3px solid $primaryAccentColor;
+  .content {
+    height: 300px;
+    left: 40px;
+    margin-top: -150px;
+  }  
+}
+
 .whoWeAreContent {
   .headshotColumn {
-    width: $gridItemSize;
+    width: $gridItemSizeLg + 20;
     text-align: center;
-    .leadName {
-      margin-top: 1em;
-      display: block;
-      color: $primaryAccentColor;
-    }
-    .leadTitle {
-      margin-top: 0em;
-      font-size: 0.85em;
-      font-weight: bold;
-      display: block;
-      color: $primaryTextColor;
-    }
     .gridItemWrapper {
       .gridItem {
         background: url('../images/content/headshot_sprite.png') no-repeat;
         &.christine_curtin {
-          background-position: -$gridItemSize*0  0px; 
+          background-position: -$gridItemSizeLg*0  0px; 
         }                                   
         &.eric_kome {                       
-          background-position: -$gridItemSize*1  0px; 
+          background-position: -$gridItemSizeLg*1  0px; 
         }                                   
         &.esther_podany {                   
-          background-position: -$gridItemSize*2  0px; 
+          background-position: -$gridItemSizeLg*2  0px; 
         }                                   
         &.gary_gnade {                      
-          background-position: -$gridItemSize*3  0px; 
+          background-position: -$gridItemSizeLg*3  0px; 
         }                                   
         &.katie_finney {                    
-          background-position: -$gridItemSize*4  0px; 
+          background-position: -$gridItemSizeLg*4  0px; 
         }                                   
         &.kevin_young {                     
-          background-position: -$gridItemSize*5  0px; 
+          background-position: -$gridItemSizeLg*5  0px; 
         }                                   
         &.michelle_maloof {                 
-          background-position: -$gridItemSize*6  0px; 
+          background-position: -$gridItemSizeLg*6  0px; 
+        }
+        &.robin_brophy {                 
+          background-position: -$gridItemSizeLg*7  0px; 
+        }
+      }
+    }
+  }
+  .plusColumn {
+    color: $primaryAccentColor;
+    font-size: 60px;
+    font-weight: 100;
+    padding: 25px;
+  }
+  .directReportsColumn {
+    width: ($gridItemSizeSm * 6);
+    .directReport {
+      display: inline-block;
+      margin: 0 8px 8px 0;
+      .gridItemWrapper {
+        .gridItemSpacer {
+          width: $gridItemSizeSm;
+          height: $gridItemSizeSm;
+        }
+        .gridItemBorder {
+          display: inline-block;
+          width: $gridItemSizeSm;
+          height: $gridItemSizeSm;
+          border: 1.75px solid $primaryTextColor;
+          border-radius: $gridItemSizeSm*0.29;
+          padding: 3px;
+          .gridItem {
+            display: inline-block;
+            width: $gridItemSizeSm;
+            height: $gridItemSizeSm;
+            border-radius: $gridItemSizeSm*0.25;
+            overflow: hidden;
+            span, a, img {
+              display: inline-block;
+              width: 100%;
+              height: 100%;
+              color: $primaryAccentColor;
+              background-size: contain;
+            }
+            a {
+              cursor: pointer;
+            }
+          }
         }
       }
     }
@@ -457,19 +568,4 @@
 }
 
 .workWithUsContent {
-  .neoLink {
-    width: 100px;
-    margin-top: 2em;
-    text-align: center;
-    .contentIcon {
-      border-width: 1.5px;
-      border-radius: 17px;
-      width: 100px;
-      height: 100px;
-      margin-bottom: 0.5em;
-    }
-    span {
-      color: $primaryAccentColor;
-    }
-  }
 }

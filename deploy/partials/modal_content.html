@@ -1,4 +1,12 @@
-<div>
-	<p>Modal Content goes here!</p> 
-	<p>Scope: {{modalContent}}</p>
+<div class="table">
+	<div class="tr">
+		<div class="td centerBoth imgCell">
+			<img src="{{modalContentSrc}}"/>
+		</div>
+	</div>	
+	<div class="tr" ng-show="modalCaption">
+		<div class="td centerBoth captionCell">
+			<div class="caption">{{modalCaption}}</div>
+		</div>
+	</div>	
 </div>

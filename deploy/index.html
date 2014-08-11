@@ -17,9 +17,9 @@
     <link rel="shortcut icon" href="favicon.png" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     
-    <link href="css/roadshow.css" rel="stylesheet" />
     <link href="bower_components/ngDialog/css/ngDialog.css" rel="stylesheet" />
-    <link href="bower_components/ngDialog/css/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="css/ngDialog-theme-rr.css" rel="stylesheet" />
+    <link href="css/roadshow.css" rel="stylesheet" />
     
 		<script src="js/vendor/angular/1.2.16/angular.min.js"></script>
     <script src="bower_components/ngDialog/js/ngDialog.js"></script>
@@ -28,7 +28,7 @@
 		<script src="js/roadshow.js"></script>
 </head>
 
-<body class="impress-not-supported {{bodyClass}}" ng-controller="roadshow.MainCtrl">
+<body class="impress-not-supported {{currLevel}}" ng-controller="roadshow.MainCtrl">
 
 	<div id="debugDiv" style="position: absolute; top: 10px; left: 10px; color: red"><h1>{{message}}</h1></div>
 
@@ -37,7 +37,7 @@
 	    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 	</div>
 	
-	<div id="impressWrapper" class="{{currSlide}}">
+	<div id="impressWrapper" class="{{currSlideId}}">
 	
 		<div id="impress" 
 			data-impress-init
@@ -51,25 +51,41 @@
 				data-scale="{{overviewSlide.scale}}">
 			</div>
 			
-	    <div id="titleSlide" 
+	    <div id="mainTitleSlide" 
 				data-step-listen
-	    	class="step titleSlide" 
-	    	style="{{'width: ' + titleSlide.width + 'px; height: ' + titleSlide.height + 'px;'}}" 
-		    data-x="{{titleSlide.x}}" 
-		    data-y="{{titleSlide.y}}" 
-		    data-scale="{{titleSlide.scale}}" 
-		    data-rotate="{{titleSlide.rotate}}"
+	    	class="step mainTitleSlide" 
+	    	style="{{'width: ' + mainTitleSlide.width + 'px; height: ' + mainTitleSlide.height + 'px;'}}" 
+		    data-x="{{mainTitleSlide.x}}" 
+		    data-y="{{mainTitleSlide.y}}" 
+		    data-scale="{{mainTitleSlide.scale}}" 
+		    data-rotate="{{mainTitleSlide.rotate}}"
 		    ng-include="'partials/slide_presentation_title.html'">
 	    </div>
 	    
-			<div ng-repeat="slide in slides"
+			<div ng-repeat="slide in titleSlides"
 				data-step-listen
 				style="width: {{slideWidth+'px'}}; height: {{slideHeight+'px'}};" 
-				class="step slide generatedSlide {{'slide'+slide.id}} {{'depth'+slide.depth}}"
+				class="step slide {{'slide_'+slide.id}} {{'depth'+slide.depth}}"
 				id="{{slide.id}}" 
 				data-x="{{slide.x}}"
 				data-y="{{slide.y}}"
 				data-scale="{{slide.scale}}" 
+				data-rotate="{{slide.rotate}}" 
+				data-transition-next="{{slide.transitionDurationNext}}" 
+				data-transition-prev="{{slide.transitionDurationPrev}}" 
+				ng-include="getSlideTemplate(slide)">
+			</div>
+			
+			<div ng-repeat="slide in slides"
+				data-step-listen
+				style="width: {{slideWidth+'px'}}; height: {{slideHeight+'px'}};" 
+				class="step slide generatedSlide {{'slide_'+slide.id}} {{'depth'+slide.depth}}"
+				id="{{slide.id}}" 
+				data-x="{{slide.x}}"
+				data-y="{{slide.y}}"
+				data-scale="{{slide.scale}}" 
+				data-transition-next="{{slide.transitionDurationNext}}" 
+				data-transition-prev="{{slide.transitionDurationPrev}}" 
 				ng-include="getSlideTemplate(slide)">
 			</div>
 				<!-- data-z="{{slide.z}}" -->
@@ -78,6 +94,9 @@
 	
 	</div>
 	
+	<div class="brandingBar">
+		
+	</div>
 	
 	<!-- This contains the hidden content for inline calls -->
 	<div style='display:none'>

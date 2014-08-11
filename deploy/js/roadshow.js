@@ -11,30 +11,96 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	$scope.topLevelLength = 7;
 	$scope.slides = [];
 	$scope.ready = false;
-	// $scope.bodyClass = 'upperLevel';
-	$scope.titleSlide = {
+	
+	$scope.mainTitleSlide = {
+		id: 'mainTitleSlide',
 		width: 500, //arbitrary, to fit title
 		height: $scope.slideHeight,
 		rotate: -90,
 		scale: $scope.topLevelLength * ($scope.slideWidth/$scope.slideHeight),
-		y: -($scope.topLevelLength * $scope.slideHeight) + ($scope.slideHeight * 0.5)
+		y: -($scope.topLevelLength * $scope.slideHeight) + ($scope.slideHeight * 0.5),
+		level: 'titleSlideLevel'
 	};
+	
+	// Defined in external data file
+	marcommWhatWeDo.width = 1000; 
+	marcommWhatWeDo.height = $scope.slideHeight; 
+	marcommWhatWeDo.rotate = -90; 
+	marcommWhatWeDo.scale = $scope.mainTitleSlide.scale / 3; 
+	marcommWhatWeDo.y = $scope.mainTitleSlide.y - (7.5 * $scope.slideWidth);
+	
+	marcommWhoWeAre.width = 1000; 
+	marcommWhoWeAre.height = $scope.slideHeight; 
+	marcommWhoWeAre.rotate = -90; 
+	marcommWhoWeAre.scale = $scope.mainTitleSlide.scale / 3; 
+	marcommWhoWeAre.y = $scope.mainTitleSlide.y - (12.5 * $scope.slideWidth);
+	
+	$scope.titleSlides = [marcommWhatWeDo, marcommWhoWeAre];
+	
 	// Arbitrary size and position
 	$scope.overviewSlide = {
 		scale: 12,
-		y: -($scope.topLevelLength * $scope.slideHeight) + $scope.titleSlide.width
+		y: -($scope.topLevelLength * $scope.slideHeight) + $scope.mainTitleSlide.width,
+		level: 'titleSlideLevel'
 	};
 	
-	var rand = function(min, max) {
-		return min + Math.random() * (max - min);
+	var toTitleCase = function(str) {
+    return str.replace(/([^\W_]+[^\s-]*) */g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	};
 	
-	var getRandomColor = function() {
-		var h = rand(1, 360);
-		var s = rand(20, 60);
-		var l = rand(20, 50);
-		return 'hsl(' + h + ',' + s + '%,' + l + '%)';
+	var initSlide = function(slide, parent) {
+		if (parent) {
+			slide.section = parent.section;
+			slide.subTitle = parent.title;
+			slide.level = "generatedSubSlideLevel";
+		} else {
+			slide.level = slide.level ? slide.level : "generatedTitleSlideLevel";
+		}
+		if (slide.bodyCopy) {
+			slide.bodyCopy = $sce.trustAsHtml(slide.bodyCopy);
+		}
+		if (slide.directReports) {
+			for (var i = 0; i < slide.directReports.length; i++) {
+				var dr = slide.directReports[i];
+				if (dr.id) {
+					dr.src = "images/content/" + slide.section + "/dr/" + dr.id + ".png";
+					dr.name = toTitleCase(dr.id.replace('_', ' '));
+				}
+			}
+		}
+		if (slide.gridItems) {
+			for (var i = 0; i < slide.gridItems.length; i++) {
+				var gi = slide.gridItems[i];
+				if (gi.id && !(gi.src)) {
+					gi.src = "images/content/" + slide.section + "/" + gi.id + "_thumbnail.jpg";
+					gi.name = toTitleCase(gi.id.replace('_', ' '));
+					gi.contentSrc = "images/content/" + slide.section + "/" + gi.id + "_full.jpg";
+				}
+			}
+		}
+		if (slide.children) {
+			for (var i = 0; i < slide.children.length; i++) {
+				var child = slide.children[i];
+				initSlide(child, slide);
+			}
+		}
+		$scope.slideMap[slide.id] = slide;
 	};
+	
+	var initSlides = function() {
+		$scope.slideMap = {};
+		$scope.slideMap['overviewSlide'] = $scope.overviewSlide;
+		$scope.slideMap['mainTitleSlide'] = $scope.mainTitleSlide;
+		// traverse top level slides
+		for (var i = 0; i < slideArray.length; i++) {
+			initSlide(slideArray[i], null);
+		}
+		for (var i = 0; i < $scope.titleSlides.length; i++) {
+			initSlide($scope.titleSlides[i], null);
+		}
+	};
+	
+	initSlides();
 	
 	var setSlidePos = function(slide, parent, x, y, z, depth) {
 		if (!parent) {
@@ -42,12 +108,10 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 			slide.h = $scope.slideHeight;
 			slide.scale = $scope.initalScale;
 		} else {
+			slide.parent = parent;
 			slide.w = parent.childWidth;
 			slide.h = parent.childHeight;
 			slide.scale = parent.childScale;
-			slide.section = parent.section;
-			slide.subTitle = parent.title;
-			slide.bodyCopy = $sce.trustAsHtml(slide.bodyCopy);
 		}
 		slide.depth = depth;
 		slide.x = x;
@@ -55,7 +119,6 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		slide.z = z;
 		slide.rotate = 0;
 		$scope.slides.push(slide);
-		slide.bgColor = getRandomColor(); //'#'+(Math.random()*0xFFFFFF<<0).toString(16);
 		depth++;
 		if (slide.children) {
 			// divide evenly by number of children
@@ -101,8 +164,8 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	var initPositions = function() {
 		var depth = 0;
 		var spacing = 10;
-		for (var i = 0; i < slideMap.length; i++) {
-			var slide = slideMap[i];
+		for (var i = 0; i < slideArray.length; i++) {
+			var slide = slideArray[i];
 			var colNum = 1 + (i % $scope.topLevelLength);
 			var x = Math.round((colNum * $scope.slideWidth) - ($scope.slideWidth/2)) + (colNum * spacing);
 			var rowNum = 1 + Math.floor(i / $scope.topLevelLength);
@@ -114,7 +177,11 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		var fullWidth = (totalCols * $scope.slideWidth) + ((totalCols - 1) * spacing);
 		var fullHeight = (totalRows * $scope.slideHeight) + ((totalRows - 1) * spacing);
 		$scope.overviewSlide.x = 0.5 * fullWidth;
-		$scope.titleSlide.x = 0.5 * fullWidth;
+		$scope.mainTitleSlide.x = 0.5 * fullWidth;
+		for (var j=0; j < $scope.titleSlides.length; j++) {
+			var slide = $scope.titleSlides[j];
+			slide.x = 0.5 * fullWidth;
+		}
 	};
 	
 	$scope.getSlideTemplate = function(slide) {
@@ -125,49 +192,101 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		}
 	};
 	
-	$scope.getSlideId = function(slide) {
-		return;
-	};
-	
 	initPositions();
 	
-	$scope.delayedInit = function() {
-		impress().init();
-		$scope.steps = impress().getSteps();
+	var getSlideDataById = function(id) {
+		return $scope.slideMap[id];
+	};
+	
+	//FIXME: Clean up interchangeable references to "Slide" and "Step"
+	
+	var setCurrLevel = function(id) {
+		var slide = getSlideDataById(id);
+		$scope.currLevel = slide.level;
 	};
 	
 	$scope.onStepChange = function(e) {
-		// debugger;
 		try {
-			console.log('onStepChange. Event type: ' + e.type + '. startingStep: ' + e.detail.startingStep.id + '. endingStep: ' + e.detail.endingStep.id);
-			var endingId = e.detail.endingStep.id;
-			$scope.currSlide = endingId;
-			if (endingId == 'overviewSlide' || endingId == 'titleSlide') {
-				$scope.bodyClass = 'upperLevel';
-			} else {
-				$scope.bodyClass = 'lowerLevel';
-			}
+		// debugger;
 		} catch(err) {
 			console.log('Error in onStepChange: ' + err);
 		}
+	};
+
+	var setSlideOpacity = function(slide, coverOpacity, contentOpacity) {
+		slide.coverOpacity = coverOpacity ? "opaque" : "transparent";
+		slide.contentOpacity = contentOpacity ? "opaque" : "transparent";
+	};
+	
+	var setOpacityStates = function(slide) {
+		if (slide.level === "titleSlideLevel") {
+			angular.forEach($scope.slideMap, function(s) {
+				if (s.level === "generatedTitleSlideLevel") {
+					setSlideOpacity(s, true, false);
+				} else if (s.level === "generatedSubSlideLevel") {
+					setSlideOpacity(s, false, false);
+				}
+			});
+		} else if (slide.level === "generatedTitleSlideLevel") {
+			angular.forEach($scope.slideMap, function(s) {
+				if (s.level === "generatedTitleSlideLevel") {
+					if (s.id !== slide.id) {
+						setSlideOpacity(s, true, false);
+					}
+				} else if (s.level === "generatedSubSlideLevel") {
+					if (s.parent.id === slide.id) {
+						setSlideOpacity(s, false, true);
+					} else {
+						setSlideOpacity(s, false, false);
+					}
+				}
+			});
+		} else if (slide.level === "generatedSubSlideLevel") {
+			angular.forEach($scope.slideMap, function(s) {
+				if (s.level === "generatedTitleSlideLevel") {
+					if (s.id === slide.parent.id) {
+						setSlideOpacity(s, false, true);
+					} else {
+						setSlideOpacity(s, true, false);
+					}
+				} else if (s.level === "generatedSubSlideLevel") {
+					if (s.parent.id === slide.parent.id) {
+						setSlideOpacity(s, false, true);
+					} else {
+						setSlideOpacity(s, false, false);
+					}
+				}
+			});
+		}
+		setSlideOpacity(slide, false, true);
 		$scope.$apply();
+	};
+	
+	$scope.onStepLeave = function(e) {
+		if (e.detail.endingStep) {
+			var nextSlide = getSlideDataById(e.detail.endingStep.id);
+			console.log("    leave " + e.detail.startingStep.id);
+			setOpacityStates(nextSlide);
+			$scope.currSlideId = nextSlide.id;
+			$scope.currLevel = nextSlide.level;				
+			$scope.$apply();
+		}
+	};
+	
+	$scope.onStepEnter = function(e) {
+		if (e.detail.startingStep) {
+		}
 	};
 	
 	$scope.onImpressInit = function(e) {
 		console.log('onImpressInit.');
-		var stepId = impress().getNext().id;
-		if (stepId == 'overviewSlide' || stepId == 'titleSlide') {
-			$scope.bodyClass = 'upperLevel';
-		} else {
-			$scope.bodyClass = 'lowerLevel';
-		}
-		$scope.ready = true;
+		var slide = getSlideDataById(impress().getNext().id);
+		setOpacityStates(slide);
+		$scope.currSlideId = slide.id;
+		$scope.currLevel = slide.level;				
 		$scope.$apply();
+		$scope.ready = true;
 	};
-	
-	$timeout(function() {
-		$scope.delayedInit();
-	}, 500);
 	
 	$scope.onExampleClick = function(e, id) {
 		e.stopPropagation();
@@ -176,28 +295,49 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	};
 
 	var launchModal = function(item) {
-		$scope.modalContent = "Variable modal content.";
+		$scope.modalContentSrc = item.contentSrc;
+		$scope.modalCaption = item.caption;
 		var content = $compile("<div ng-include=" + item.template + "></div>");
-		ngDialog.open({template: item.template});
+		$scope.modal = ngDialog.open({
+				template: item.template,
+				scope: $scope,
+				className: 'ngdialog-theme-rr'
+			});
 	};
 	
 	$scope.onContentItemClick = function(e, item) {
-		e.stopPropagation();
-		e.preventDefault();
 		if (item && item.template) {
+			e.stopPropagation();
+			e.preventDefault();
 			launchModal(item);
+		} else if (item && item.url) {
+			console.log(item.url);
 		}
 	};
+	
+	/*
+	 * Called after timeout so browser has a chance to render before impress is run
+	 */
+	$scope.delayedInit = function() {
+		impress().init();
+		$scope.steps = impress().getSteps();
+	};
+	
+	$timeout(function() {
+		$scope.delayedInit();
+	}, 500);
 	
 };
 
 roadshow.App.directive('stepListen', function() {
 	return function (scope, elem, attrs) {
 		elem.on('impress:stepenter', function(e) {
-			scope.onStepChange(e);
+			// scope.onStepChange(e);
+			scope.onStepEnter(e);
 		});
 		elem.on('impress:stepleave', function(e) {
-			scope.onStepChange(e);
+			// scope.onStepChange(e);
+			scope.onStepLeave(e);
 		});
 	};
 });
@@ -210,7 +350,3 @@ roadshow.App.directive('impressInit', function() {
 	};
 });
 
-
-//
-$(document).ready(function(){
-});
