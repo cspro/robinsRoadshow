@@ -223,124 +223,135 @@ li {
 }
 /* line 34, ../sass/_slides.scss */
 .impress-enabled .step .slideCover, .impress-enabled .step .slideContent {
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
   transition: opacity 1s;
 }
-/* line 37, ../sass/_slides.scss */
+/* line 39, ../sass/_slides.scss */
 .impress-enabled .step .sectionTitleSlide {
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-/* line 48, ../sass/_slides.scss */
+/* line 52, ../sass/_slides.scss */
 .impress-enabled .step.active {
   pointer-events: auto;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;
 }
 
 /* Make all slides visible on overview */
-/* line 55, ../sass/_slides.scss */
+/* line 61, ../sass/_slides.scss */
 .impress-on-overview .step {
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;
   cursor: pointer;
 }
 
 /* Page class is set to current slide id in event handler */
-/* line 62, ../sass/_slides.scss */
+/* line 70, ../sass/_slides.scss */
 .slideCover {
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
-/* line 64, ../sass/_slides.scss */
+/* line 74, ../sass/_slides.scss */
 .slideCover .sectionIcon span {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
   transition: all 1s;
 }
 
 /* Title level slides are always opaque */
-/* line 70, ../sass/_slides.scss */
+/* line 82, ../sass/_slides.scss */
 .titleSlideLevel {
   opacity: 1 !important;
 }
-/* line 72, ../sass/_slides.scss */
+/* line 84, ../sass/_slides.scss */
 .titleSlideLevel .generatedSlide {
   opacity: 1;
 }
-/* line 74, ../sass/_slides.scss */
+/* line 86, ../sass/_slides.scss */
 .titleSlideLevel .generatedSlide .slideCover {
   opacity: 1;
 }
-/* line 77, ../sass/_slides.scss */
+/* line 89, ../sass/_slides.scss */
 .titleSlideLevel .generatedSlide .slideContent {
   opacity: 0;
 }
+/* line 95, ../sass/_slides.scss */
+.titleSlideLevel .slideCover .sectionIcon span {
+  -webkit-transform: rotate(-90deg);
+  /* Opera, Chrome, and Safari */
+  -moz-transform: rotate(-90deg);
+  /* IE 9 */
+  transform: rotate(-90deg);
+}
 
-/* line 83, ../sass/_slides.scss */
+/* line 103, ../sass/_slides.scss */
 .generatedTitleSlideLevel .step.past, .generatedTitleSlideLevel .step.future {
   opacity: 0.3;
 }
 
-/* line 93, ../sass/_slides.scss */
+/* line 113, ../sass/_slides.scss */
 .transparent {
   opacity: 0 !important;
 }
 
-/* line 96, ../sass/_slides.scss */
+/* line 116, ../sass/_slides.scss */
 .opaque {
   opacity: 1 !important;
-}
-
-/* line 103, ../sass/_slides.scss */
-.mainTitleSlide .slideCover .sectionIcon span {
-  transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  /* IE 9 */
-  -webkit-transform: rotate(-90deg);
-  /* Opera, Chrome, and Safari */
 }
 
 /* ======================================
  * Custom classes 
  * ======================================*/
-/* line 115, ../sass/_slides.scss */
+/* line 124, ../sass/_slides.scss */
 .table {
   display: table;
   border-collapse: collapse;
 }
 
-/* line 120, ../sass/_slides.scss */
+/* line 129, ../sass/_slides.scss */
 .tr {
   display: table-row;
 }
 
-/* line 124, ../sass/_slides.scss */
+/* line 133, ../sass/_slides.scss */
 .td {
   display: table-cell;
 }
 
-/* line 128, ../sass/_slides.scss */
+/* line 137, ../sass/_slides.scss */
 .centerBoth {
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 133, ../sass/_slides.scss */
+/* line 142, ../sass/_slides.scss */
 .slide {
   display: block;
   border-collapse: collapse;
   padding: 0;
   border-radius: 0px;
 }
-/* line 141, ../sass/_slides.scss */
+/* line 150, ../sass/_slides.scss */
 .slide .slideWrapper {
   display: block;
   width: 100%;
   height: 100%;
 }
-/* line 145, ../sass/_slides.scss */
+/* line 154, ../sass/_slides.scss */
 .slide .slideWrapper h1 {
   color: white;
   line-height: 100%;
 }
-/* line 149, ../sass/_slides.scss */
+/* line 158, ../sass/_slides.scss */
 .slide .slideWrapper h2 {
   margin-top: 30px;
   color: #78b761;
@@ -348,7 +359,7 @@ li {
   font-weight: normal;
   letter-spacing: 0px;
 }
-/* line 156, ../sass/_slides.scss */
+/* line 165, ../sass/_slides.scss */
 .slide .slideWrapper .slideCover {
   position: absolute;
   top: 0;
@@ -357,7 +368,7 @@ li {
   height: 100%;
   z-index: 100;
 }
-/* line 165, ../sass/_slides.scss */
+/* line 174, ../sass/_slides.scss */
 .slide .slideWrapper .slideContent {
   position: absolute;
   top: 0;
@@ -367,105 +378,105 @@ li {
   z-index: 10;
   padding: 1em;
 }
-/* line 176, ../sass/_slides.scss */
+/* line 185, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide h1 {
-  font-size: 65px;
+  font-size: 62px;
 }
-/* line 179, ../sass/_slides.scss */
+/* line 188, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide h2 {
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 35px;
 }
-/* line 183, ../sass/_slides.scss */
+/* line 192, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .table {
-  height: 70%;
+  height: 65%;
 }
-/* line 186, ../sass/_slides.scss */
+/* line 195, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .iconColumn {
   width: 180px;
-  padding: 120px 20px;
+  padding: 100px 20px;
   border-right: 2px solid #78b761;
 }
-/* line 191, ../sass/_slides.scss */
+/* line 200, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .contentColumn {
-  padding: 100px 0 0 50px;
+  padding: 80px 0 0 50px;
 }
-/* line 194, ../sass/_slides.scss */
+/* line 203, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .bottomSpacer {
   clear: both;
   width: 100%;
   height: 30%;
 }
-/* line 200, ../sass/_slides.scss */
+/* line 209, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .slideCover .sectionIcon {
   border-width: 12px;
   border-radius: 100px;
   width: 600px;
   height: 600px;
 }
-/* line 209, ../sass/_slides.scss */
+/* line 218, ../sass/_slides.scss */
 .slide .slideWrapper.sectionTitleSlide .slideContent .iconColumn .sectionIcon {
   border-width: 2px;
   border-radius: 32px;
   width: 120px;
   height: 120px;
 }
-/* line 221, ../sass/_slides.scss */
+/* line 230, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide h1 {
   font-size: 50px;
   text-transform: uppercase;
 }
-/* line 225, ../sass/_slides.scss */
+/* line 234, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide h2 {
   margin-top: 30px;
   font-size: 28px;
 }
-/* line 229, ../sass/_slides.scss */
+/* line 238, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .table {
   height: 90%;
 }
-/* line 232, ../sass/_slides.scss */
+/* line 241, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .td {
   vertical-align: top;
 }
-/* line 235, ../sass/_slides.scss */
+/* line 244, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .iconColumn {
   border-right: 3px solid #78b761;
 }
-/* line 238, ../sass/_slides.scss */
+/* line 247, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .iconColumn .content {
   padding: 80px 50px;
 }
-/* line 242, ../sass/_slides.scss */
+/* line 251, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .contentColumn {
   width: 100%;
 }
-/* line 244, ../sass/_slides.scss */
+/* line 253, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .contentColumn .content {
   padding: 40px 0 0 50px;
 }
-/* line 249, ../sass/_slides.scss */
+/* line 258, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideCover .sectionIcon {
   border-width: 12px;
   border-radius: 100px;
   width: 600px;
   height: 600px;
 }
-/* line 258, ../sass/_slides.scss */
+/* line 267, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .iconColumn .sectionIcon {
   border-width: 1.5px;
   border-radius: 17px;
   width: 60px;
   height: 60px;
 }
-/* line 265, ../sass/_slides.scss */
+/* line 274, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn {
   width: 650px;
   font-size: 18px;
   font-weight: lighter;
   letter-spacing: 0.05em;
 }
-/* line 270, ../sass/_slides.scss */
+/* line 279, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn .subHeader {
   width: 100%;
   border-bottom: 1px solid #78b761;
@@ -476,18 +487,18 @@ li {
   color: #78b761;
   text-transform: uppercase;
 }
-/* line 280, ../sass/_slides.scss */
+/* line 289, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn p {
   margin-bottom: 1em;
 }
-/* line 283, ../sass/_slides.scss */
+/* line 292, ../sass/_slides.scss */
 .slide .slideWrapper.sectionSubSlide .slideContent .contentColumn em {
   color: #78b761;
   font-style: italic;
   font-weight: bold;
 }
 
-/* line 294, ../sass/_slides.scss */
+/* line 303, ../sass/_slides.scss */
 .sectionIcon, .contentIcon {
   display: inline-block;
   border-style: solid;
@@ -495,81 +506,81 @@ li {
   text-align: center;
   vertical-align: middle;
 }
-/* line 300, ../sass/_slides.scss */
+/* line 309, ../sass/_slides.scss */
 .sectionIcon span, .contentIcon span {
   display: inline-block;
   width: 100%;
   height: 100%;
   color: #78b761;
 }
-/* line 305, ../sass/_slides.scss */
+/* line 314, ../sass/_slides.scss */
 .sectionIcon span.icon-creative, .contentIcon span.icon-creative {
   background-image: url("../images/Roadshow_MP_Icons_Creative.svg");
   background-size: contain;
 }
-/* line 309, ../sass/_slides.scss */
+/* line 318, ../sass/_slides.scss */
 .sectionIcon span.icon-avatar, .contentIcon span.icon-avatar {
   background-image: url("../images/Roadshow_MP_Icons_Avatar.svg");
   background-size: contain;
 }
-/* line 313, ../sass/_slides.scss */
+/* line 322, ../sass/_slides.scss */
 .sectionIcon span.icon-dc, .contentIcon span.icon-dc {
   background-image: url("../images/Roadshow_MP_Icons_DC.svg");
   background-size: contain;
 }
-/* line 317, ../sass/_slides.scss */
+/* line 326, ../sass/_slides.scss */
 .sectionIcon span.icon-events, .contentIcon span.icon-events {
   background-image: url("../images/Roadshow_MP_Icons_Events.svg");
   background-size: contain;
 }
-/* line 321, ../sass/_slides.scss */
+/* line 330, ../sass/_slides.scss */
 .sectionIcon span.icon-k20cm, .contentIcon span.icon-k20cm {
   background-image: url("../images/Roadshow_MP_Icons_K20CM.svg");
   background-size: contain;
 }
-/* line 325, ../sass/_slides.scss */
+/* line 334, ../sass/_slides.scss */
 .sectionIcon span.icon-mpp, .contentIcon span.icon-mpp {
   background-image: url("../images/Roadshow_MP_Icons_MPP.svg");
   background-size: contain;
 }
-/* line 329, ../sass/_slides.scss */
+/* line 338, ../sass/_slides.scss */
 .sectionIcon span.icon-neo, .contentIcon span.icon-neo {
   background-image: url("../images/Roadshow_MP_Icons_Neo.svg");
   background-size: contain;
 }
-/* line 333, ../sass/_slides.scss */
+/* line 342, ../sass/_slides.scss */
 .sectionIcon span.icon-org, .contentIcon span.icon-org {
   background-image: url("../images/Roadshow_MP_Icons_Org.svg");
   background-size: contain;
 }
-/* line 337, ../sass/_slides.scss */
+/* line 346, ../sass/_slides.scss */
 .sectionIcon span.icon-pm, .contentIcon span.icon-pm {
   background-image: url("../images/Roadshow_MP_Icons_PM.svg");
   background-size: contain;
 }
-/* line 341, ../sass/_slides.scss */
+/* line 350, ../sass/_slides.scss */
 .sectionIcon span.icon-vmg, .contentIcon span.icon-vmg {
   background-image: url("../images/Roadshow_MP_Icons_VMG.svg");
   background-size: contain;
 }
-/* line 345, ../sass/_slides.scss */
+/* line 354, ../sass/_slides.scss */
 .sectionIcon span.icon-marcomm, .contentIcon span.icon-marcomm {
   background-image: url("../images/Roadshow_MP_Icons_MarketingPrograms.svg");
   background-size: contain;
 }
 
-/* line 352, ../sass/_slides.scss */
+/* line 361, ../sass/_slides.scss */
 .gridItemWrapper {
   display: inline-block;
   vertical-align: top;
 }
-/* line 355, ../sass/_slides.scss */
+/* line 364, ../sass/_slides.scss */
 .gridItemWrapper .gridItemSpacer {
   display: inline-block;
   width: 120px;
   height: 120px;
 }
-/* line 360, ../sass/_slides.scss */
+/* line 369, ../sass/_slides.scss */
 .gridItemWrapper .gridItemBorder {
   display: inline-block;
   width: 120px;
@@ -578,7 +589,7 @@ li {
   border-radius: 34.8px;
   padding: 4px;
 }
-/* line 367, ../sass/_slides.scss */
+/* line 376, ../sass/_slides.scss */
 .gridItemWrapper .gridItemBorder .gridItem {
   display: inline-block;
   width: 120px;
@@ -586,7 +597,7 @@ li {
   border-radius: 30px;
   overflow: hidden;
 }
-/* line 373, ../sass/_slides.scss */
+/* line 382, ../sass/_slides.scss */
 .gridItemWrapper .gridItemBorder .gridItem span, .gridItemWrapper .gridItemBorder .gridItem a, .gridItemWrapper .gridItemBorder .gridItem img {
   display: inline-block;
   width: 100%;
@@ -594,11 +605,11 @@ li {
   color: #78b761;
   background-size: contain;
 }
-/* line 380, ../sass/_slides.scss */
+/* line 389, ../sass/_slides.scss */
 .gridItemWrapper .gridItemBorder .gridItem a {
   cursor: pointer;
 }
-/* line 385, ../sass/_slides.scss */
+/* line 394, ../sass/_slides.scss */
 .gridItemWrapper .gridItemCaption {
   display: block;
   font-weight: bold;
@@ -610,12 +621,12 @@ li {
   color: #78b761;
 }
 
-/* line 398, ../sass/_slides.scss */
+/* line 407, ../sass/_slides.scss */
 .grid .gridItemWrapper {
   margin: 0 1em 1em 0;
 }
 
-/* line 403, ../sass/_slides.scss */
+/* line 412, ../sass/_slides.scss */
 .neoLink, .orgChartLink {
   display: block;
   width: 136px;
@@ -625,7 +636,7 @@ li {
   padding: 4px;
   cursor: pointer;
 }
-/* line 411, ../sass/_slides.scss */
+/* line 420, ../sass/_slides.scss */
 .neoLink .contentIcon, .orgChartLink .contentIcon {
   border-width: 1.5px;
   border-radius: 34.8px;
@@ -633,19 +644,19 @@ li {
   height: 120px;
   margin-bottom: 0.5em;
 }
-/* line 418, ../sass/_slides.scss */
+/* line 427, ../sass/_slides.scss */
 .neoLink span, .orgChartLink span {
   color: #78b761;
 }
 
-/* line 423, ../sass/_slides.scss */
+/* line 432, ../sass/_slides.scss */
 .caption {
   margin-top: 0.5em;
   display: block;
   color: #78b761;
 }
 
-/* line 428, ../sass/_slides.scss */
+/* line 437, ../sass/_slides.scss */
 .subCaption {
   margin-top: 0em;
   font-size: 0.85em;
@@ -657,128 +668,132 @@ li {
 /* ======================================
  * Individual slide styles 
  * ======================================*/
-/* line 441, ../sass/_slides.scss */
+/* line 450, ../sass/_slides.scss */
 #overview {
   display: none;
 }
 
-/* line 445, ../sass/_slides.scss */
-#mainTitleSlide {
-  border-left: 3px solid #78b761;
-}
-/* line 447, ../sass/_slides.scss */
+/* line 455, ../sass/_slides.scss */
 #mainTitleSlide .content {
   position: absolute;
-  top: 50%;
-  height: 300px;
-  left: 40px;
-  margin-top: -150px;
+  top: 35px;
+  bottom: 85px;
+  border-left: 3px solid #78b761;
+  left: 45px;
 }
-/* line 453, ../sass/_slides.scss */
+/* line 461, ../sass/_slides.scss */
+#mainTitleSlide .content .innerContent {
+  position: absolute;
+  height: 250px;
+  top: 50%;
+  margin-top: -125px;
+  left: 45px;
+}
+/* line 468, ../sass/_slides.scss */
 #mainTitleSlide .content * {
   margin: 0;
 }
-/* line 456, ../sass/_slides.scss */
+/* line 471, ../sass/_slides.scss */
 #mainTitleSlide .content h1 {
-  font-size: 100px;
+  font-size: 85px;
   color: white;
   line-height: 100%;
 }
-/* line 461, ../sass/_slides.scss */
+/* line 476, ../sass/_slides.scss */
 #mainTitleSlide .content h2 {
-  margin-top: 30px;
-  font-size: 40px;
+  margin-top: 24px;
+  font-size: 36px;
   color: #78b761;
   text-transform: uppercase;
   font-weight: normal;
   letter-spacing: 6px;
 }
 
-/* line 472, ../sass/_slides.scss */
+/* line 487, ../sass/_slides.scss */
 #marcommWhatWeDo {
   border: 3px solid #78b761;
 }
-/* line 474, ../sass/_slides.scss */
+/* line 489, ../sass/_slides.scss */
 #marcommWhatWeDo .content {
   height: 300px;
   left: 40px;
   margin-top: -150px;
 }
 
-/* line 481, ../sass/_slides.scss */
+/* line 496, ../sass/_slides.scss */
 #marcommWhoWeAre {
   border: 3px solid #78b761;
 }
-/* line 483, ../sass/_slides.scss */
+/* line 498, ../sass/_slides.scss */
 #marcommWhoWeAre .content {
   height: 300px;
   left: 40px;
   margin-top: -150px;
 }
 
-/* line 491, ../sass/_slides.scss */
+/* line 506, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn {
   width: 140px;
   text-align: center;
 }
-/* line 495, ../sass/_slides.scss */
+/* line 510, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem {
   background: url("../images/content/headshot_sprite.png") no-repeat;
 }
-/* line 497, ../sass/_slides.scss */
+/* line 512, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.christine_curtin {
   background-position: 0px 0px;
 }
-/* line 500, ../sass/_slides.scss */
+/* line 515, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.eric_kome {
   background-position: -120px 0px;
 }
-/* line 503, ../sass/_slides.scss */
+/* line 518, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.esther_podany {
   background-position: -240px 0px;
 }
-/* line 506, ../sass/_slides.scss */
+/* line 521, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.gary_gnade {
   background-position: -360px 0px;
 }
-/* line 509, ../sass/_slides.scss */
+/* line 524, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.katie_finney {
   background-position: -480px 0px;
 }
-/* line 512, ../sass/_slides.scss */
+/* line 527, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.kevin_young {
   background-position: -600px 0px;
 }
-/* line 515, ../sass/_slides.scss */
+/* line 530, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.michelle_maloof {
   background-position: -720px 0px;
 }
-/* line 518, ../sass/_slides.scss */
+/* line 533, ../sass/_slides.scss */
 .whoWeAreContent .headshotColumn .gridItemWrapper .gridItem.robin_brophy {
   background-position: -840px 0px;
 }
-/* line 524, ../sass/_slides.scss */
+/* line 539, ../sass/_slides.scss */
 .whoWeAreContent .plusColumn {
   color: #78b761;
   font-size: 60px;
   font-weight: 100;
   padding: 25px;
 }
-/* line 530, ../sass/_slides.scss */
+/* line 545, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn {
   width: 300px;
 }
-/* line 532, ../sass/_slides.scss */
+/* line 547, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn .directReport {
   display: inline-block;
   margin: 0 8px 8px 0;
 }
-/* line 536, ../sass/_slides.scss */
+/* line 551, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemSpacer {
   width: 50px;
   height: 50px;
 }
-/* line 540, ../sass/_slides.scss */
+/* line 555, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemBorder {
   display: inline-block;
   width: 50px;
@@ -787,7 +802,7 @@ li {
   border-radius: 14.5px;
   padding: 3px;
 }
-/* line 547, ../sass/_slides.scss */
+/* line 562, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemBorder .gridItem {
   display: inline-block;
   width: 50px;
@@ -795,7 +810,7 @@ li {
   border-radius: 12.5px;
   overflow: hidden;
 }
-/* line 553, ../sass/_slides.scss */
+/* line 568, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemBorder .gridItem span, .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemBorder .gridItem a, .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemBorder .gridItem img {
   display: inline-block;
   width: 100%;
@@ -803,7 +818,7 @@ li {
   color: #78b761;
   background-size: contain;
 }
-/* line 560, ../sass/_slides.scss */
+/* line 575, ../sass/_slides.scss */
 .whoWeAreContent .directReportsColumn .directReport .gridItemWrapper .gridItemBorder .gridItem a {
   cursor: pointer;
 }
@@ -821,7 +836,7 @@ li {
 /* line 11, ../sass/_modal.scss */
 .ngdialog-content {
   max-width: 960px;
-  max-height: 640px;
+  max-height: 740px;
   padding: 0;
   overflow: auto;
 }
@@ -839,7 +854,15 @@ li {
 .ngdialog-content .table .td.imgCell img {
   margin: 2em 0;
 }
-/* line 28, ../sass/_modal.scss */
+/* line 26, ../sass/_modal.scss */
+.ngdialog-content .table .td.imgCell a:hover {
+  background: none;
+}
+/* line 30, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell {
+  text-align: center;
+}
+/* line 32, ../sass/_modal.scss */
 .ngdialog-content .table .td.captionCell .caption {
   margin: 0;
   display: block;
@@ -848,6 +871,38 @@ li {
   color: #aaaaaa;
   border-top: 1px dotted #666666;
   max-height: 50px;
+}
+/* line 41, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell .modalBody {
+  display: block;
+  width: 100%;
+  font-size: 80% !important;
+  line-height: 150%;
+  margin: 1em auto;
+}
+/* line 47, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell .modalBody * {
+  margin: 0 auto;
+}
+/* line 50, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell .modalBody h4 {
+  color: #78b761;
+}
+/* line 53, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell .modalBody p, .ngdialog-content .table .td.captionCell .modalBody h4 {
+  text-align: left;
+  max-width: 770px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+/* line 59, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell .modalBody ul {
+  text-align: left;
+  max-width: 770px;
+}
+/* line 62, ../sass/_modal.scss */
+.ngdialog-content .table .td.captionCell .modalBody ul li {
+  margin-left: 2em;
 }
 
 /* line 143, ../sass/roadshow.scss */

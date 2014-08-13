@@ -17,7 +17,7 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		width: 500, //arbitrary, to fit title
 		height: $scope.slideHeight,
 		rotate: -90,
-		scale: $scope.topLevelLength * ($scope.slideWidth/$scope.slideHeight),
+		scale: $scope.topLevelLength * ($scope.slideWidth/$scope.slideHeight) * 1.15,
 		y: -($scope.topLevelLength * $scope.slideHeight) + ($scope.slideHeight * 0.5),
 		level: 'titleSlideLevel'
 	};
@@ -39,8 +39,8 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	
 	// Arbitrary size and position
 	$scope.overviewSlide = {
-		scale: 12,
-		y: -($scope.topLevelLength * $scope.slideHeight) + $scope.mainTitleSlide.width,
+		scale: 13,
+		y: -($scope.topLevelLength * $scope.slideHeight) + $scope.mainTitleSlide.width + 200, //bumped to accomodate branding strap
 		level: 'titleSlideLevel'
 	};
 	
@@ -63,7 +63,7 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 			for (var i = 0; i < slide.directReports.length; i++) {
 				var dr = slide.directReports[i];
 				if (dr.id) {
-					dr.src = "images/content/" + slide.section + "/dr/" + dr.id + ".png";
+					dr.src = "images/content/" + slide.section + "/dr/" + dr.id + ".jpg";
 					dr.name = toTitleCase(dr.id.replace('_', ' '));
 				}
 			}
@@ -75,6 +75,9 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 					gi.src = "images/content/" + slide.section + "/" + gi.id + "_thumbnail.jpg";
 					gi.name = toTitleCase(gi.id.replace('_', ' '));
 					gi.contentSrc = "images/content/" + slide.section + "/" + gi.id + "_full.jpg";
+					if (gi.modalBody) {
+						gi.modalBody = $sce.trustAsHtml(gi.modalBody);
+					}
 				}
 			}
 		}
@@ -136,7 +139,7 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 						break;
 					case 1:
 						xAdj = 1 + i;
-						yAdj = 0;
+						yAdj = -50;
 						break;
 					case 2: // 1.1.1
 						xAdj = 0 + i;
@@ -177,7 +180,7 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		var fullWidth = (totalCols * $scope.slideWidth) + ((totalCols - 1) * spacing);
 		var fullHeight = (totalRows * $scope.slideHeight) + ((totalRows - 1) * spacing);
 		$scope.overviewSlide.x = 0.5 * fullWidth;
-		$scope.mainTitleSlide.x = 0.5 * fullWidth;
+		$scope.mainTitleSlide.x = 0.5 * fullWidth + 300; // bumped up to account for branding strap at bottom
 		for (var j=0; j < $scope.titleSlides.length; j++) {
 			var slide = $scope.titleSlides[j];
 			slide.x = 0.5 * fullWidth;
@@ -264,8 +267,8 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	
 	$scope.onStepLeave = function(e) {
 		if (e.detail.endingStep) {
+			// console.log("    leave " + e.detail.startingStep.id);
 			var nextSlide = getSlideDataById(e.detail.endingStep.id);
-			console.log("    leave " + e.detail.startingStep.id);
 			setOpacityStates(nextSlide);
 			$scope.currSlideId = nextSlide.id;
 			$scope.currLevel = nextSlide.level;				
@@ -275,11 +278,15 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	
 	$scope.onStepEnter = function(e) {
 		if (e.detail.startingStep) {
+			// Should have already happened on previous stepleave, but sometimes fails; this is a failsafe
+			var nextSlide = getSlideDataById(e.detail.endingStep.id);
+			setOpacityStates(nextSlide);
+			$scope.$apply();
 		}
 	};
 	
 	$scope.onImpressInit = function(e) {
-		console.log('onImpressInit.');
+		// console.log('onImpressInit.');
 		var slide = getSlideDataById(impress().getNext().id);
 		setOpacityStates(slide);
 		$scope.currSlideId = slide.id;
@@ -297,6 +304,8 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	var launchModal = function(item) {
 		$scope.modalContentSrc = item.contentSrc;
 		$scope.modalCaption = item.caption;
+		$scope.modalBodyCopy = item.modalBody;
+		$scope.modalLink = item.modalLink;
 		var content = $compile("<div ng-include=" + item.template + "></div>");
 		$scope.modal = ngDialog.open({
 				template: item.template,

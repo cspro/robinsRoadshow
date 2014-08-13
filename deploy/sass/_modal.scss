@@ -10,7 +10,7 @@
 
 .ngdialog-content {
   max-width: 960px;
-  max-height: 640px;
+  max-height: 740px;
   padding: 0;
   overflow: auto;
   .table {
@@ -23,8 +23,12 @@
         img {
           margin: 2em 0;
         }
+        a:hover {
+          background: none;
+        }
       }
       &.captionCell {
+        text-align: center;
         .caption {
           margin: 0;
           display: block;
@@ -34,7 +38,34 @@
           border-top: 1px dotted $secondaryBorderColor;
           max-height: 50px;
         }
+        .modalBody {
+          display: block;
+          width: 100%;
+          font-size: 80% !important;
+          line-height: 150%;
+          margin: 1em auto;
+          * {
+            margin: 0 auto;
+          }
+          h4 {
+            color: $primaryAccentColor;
+          }
+          p, h4 {
+            text-align: left;
+            max-width: 770px;
+            margin-top: 0.25em;
+            margin-bottom: 0.25em;
+          }
+          ul {
+            text-align: left;
+            max-width: 770px;
+            li {
+              margin-left: 2em;
+            }
+          }
+        }
       }
     }
   }
 }
+

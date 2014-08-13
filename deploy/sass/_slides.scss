@@ -32,9 +32,13 @@
   transition:         opacity 1s;
   
   .slideCover, .slideContent {
-    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    transition:         opacity 1s;
   }
   .sectionTitleSlide {
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
     transition: opacity 1s;
     .slideCover {
       // opacity: 1;
@@ -46,13 +50,17 @@
 }
 
 .impress-enabled .step.active {
-  pointer-events: auto; 
+  pointer-events: auto;
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;
 }
 
 /* Make all slides visible on overview */
 .impress-on-overview .step {
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;
   cursor: pointer;
@@ -60,8 +68,12 @@
 
 /* Page class is set to current slide id in event handler */
 .slideCover {
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
   transition: opacity 0.5s;
   .sectionIcon span {
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
     transition: all 1s;
   }
 }
@@ -76,6 +88,14 @@
     }
     .slideContent {
       opacity: 0;
+    }
+  }
+  // Icon rotation
+  .slideCover {
+    .sectionIcon span {
+      -webkit-transform:  rotate(-90deg); /* Opera, Chrome, and Safari */
+      -moz-transform:     rotate(-90deg); /* IE 9 */
+      transform:          rotate(-90deg);
     }
   }
 }
@@ -96,17 +116,6 @@
 .opaque {
   opacity: 1 !important;
 }
-
-// Icon rotation
-.mainTitleSlide {
-  .slideCover {
-    .sectionIcon span {
-      transform:          rotate(-90deg);
-      -ms-transform:      rotate(-90deg); /* IE 9 */
-      -webkit-transform:  rotate(-90deg); /* Opera, Chrome, and Safari */
-    }
-  }
-} 
 
 /* ======================================
  * Custom classes 
@@ -174,22 +183,22 @@
     
     &.sectionTitleSlide {
       h1 {
-        font-size: 65px;
+        font-size: 62px;
       }
       h2 {
-        margin-top: 30px;
+        margin-top: 20px;
         font-size: 35px;
       }
       .table {
-        height: 70%;
+        height: 65%;
       }
       .iconColumn {
         width: 180px;
-        padding: 120px 20px;
+        padding: 100px 20px;
         border-right: 2px solid $primaryAccentColor;
       }
       .contentColumn {
-        padding: 100px 0 0 50px;
+        padding: 80px 0 0 50px;
       }
       .bottomSpacer {
         clear: both;
@@ -443,24 +452,30 @@
 }
 
 #mainTitleSlide {
-  border-left: 3px solid $primaryAccentColor;
   .content {
     position: absolute;
-    top: 50%;
-    height: 300px;
-    left: 40px;
-    margin-top: -150px;
+    top: 35px;
+    bottom: 85px;
+    border-left: 3px solid $primaryAccentColor;
+    left: 45px;
+    .innerContent {
+      position: absolute;
+      height: 250px;
+      top: 50%;
+      margin-top: -125px;
+      left: 45px;
+    }
     * {
       margin: 0;
     }
     h1 {
-      font-size: 100px;
+      font-size: 85px;
       color: $primaryTextColor;
       line-height: 100%;
     }
     h2 {
-      margin-top: 30px;
-      font-size: 40px;
+      margin-top: 24px;
+      font-size: 36px;
       color: $primaryAccentColor;
       text-transform: uppercase;
       font-weight: normal;

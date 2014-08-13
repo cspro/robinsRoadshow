@@ -306,11 +306,11 @@ var slideArray = [
           {id: 'done/pearson_k12',              template: 'partials/modal_content.html', caption: 'PearsonK12.com'},
           {id: 'done/sxsw14_mural',             template: 'partials/modal_content.html', caption: 'SXSW ’14 Mural'}, 
           {id: 'done/envision_math_2',          template: 'partials/modal_content.html', caption: 'enVisionMATH 2.0'},
-          {id: 'done/reading_street',           template: 'partials/modal_content.html', caption: 'Reading Street'},
+          {id: 'done/gfta_3_campaign',          template: 'partials/modal_content.html', caption: 'GFTA-3 Campaign'},
           {id: 'done/toolkit_campaign',         template: 'partials/modal_content.html', caption: 'Toolkit Campaign'}, 
           {id: 'done/online_learning_exchange', template: 'partials/modal_content.html', caption: 'Online Learning Exchange'},
           {id: 'done/grant_planning_guide',     template: 'partials/modal_content.html', caption: 'Grant Planning & Writing Guide'},
-          {id: 'done/pearson_school',           template: 'partials/modal_content.html', caption: 'PearsonSchool.com'}
+          {id: 'done/iste14_creative',          template: 'partials/modal_content.html', caption: 'ISTE 2014 Collateral'}
         ]
       },
       {  id: 'creative_workwithus',
@@ -347,6 +347,14 @@ var slideArray = [
           name: 'Eric Kome',
           title: 'Head of Video & Motion Graphics'
         },
+        directReports: [
+        	{id: 'bill_delehant'},
+        	{id: 'david_busch'},
+          {spacer: true},
+          {spacer: true},
+        	{id: 'seth_diehl'},
+        	{id: 'tom_tate'},
+        ],
         orgChart: {
           url: 'https://neo.pearson.com/people/KOMEER/people?filterID=orgchart'
         }
@@ -356,13 +364,13 @@ var slideArray = [
         contentTemplate: 'content_default',
         bodyCopy: '',
         gridItems: [
-          {id: 'done/school_of_thought',         template: 'partials/modal_content.html', caption: 'School of Thought'},
-          {id: 'done/future_vision',             template: 'partials/modal_content.html', caption: 'Future Vision'}, 
-          {id: 'done/teaching_in_a_digital_age', template: 'partials/modal_content.html', caption: 'Teaching in a Digital Age'},
+          {id: 'done/school_of_thought',         template: 'partials/modal_content.html', caption: 'School of Thought',         modalBody: '<h4>School of Thought - 3 part video series</h4><ul><li>Client: Center for eLearning</li><li>2014 Beacon Award finalist</li><li>25,000+ YouTube views</li></ul><p>Concepting, storyboards, video, casting, locations, permits, animation/motion graphics, editing, green screen compositing, 3D modeling & animation, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=7idyNIvVCis'},
+          {id: 'done/future_vision',             template: 'partials/modal_content.html', caption: 'Future Vision',             modalBody: '<h4>A Vision for Personalized and Connected Learning</h4><ul><li>Client: Sales & Marketing, NA</li><li>16,500+ YouTube views</li></ul><p>Concepting, storyboards, video, casting, locations, animation/motion graphics, editing, green screen compositing, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=ysdPO6Kur_I'}, 
+          {id: 'done/teaching_in_a_digital_age', template: 'partials/modal_content.html', caption: 'Teaching in a Digital Age', modalBody: '<h4>Teaching in a Digital Age - multi-part series</h4><ul><li>Client: Research & Innovation Network</li></ul><p>Video, locations, shoot coordination, animation/motion graphics, editing, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=hqteWvrxuy4'},
           {spacer: true},
-          {id: 'done/breakthrough_commercial',   template: 'partials/modal_content.html', caption: 'Breakthrough Commercial'},
-          {id: 'done/a_serious_talk',            template: 'partials/modal_content.html', caption: 'A Serious Talk'}, 
-          {id: 'done/nsm14_opening_video',       template: 'partials/modal_content.html', caption: 'NSM 2014 Opening Video'}
+          {id: 'done/breakthrough_commercial',   template: 'partials/modal_content.html', caption: 'Breakthrough Commercial',   modalBody: '<h4>Breakthrough Commercial</h4><ul><li>Client: Sales & Marketing, NA</li><li>4,000+ YouTube views</li></ul><p>Video, animation/motion graphics, voice-over, editing, sound track</p>', modalLink: 'http://www.youtube.com/watch?v=EbNKuVpGZ18'},
+          {id: 'done/a_serious_talk',            template: 'partials/modal_content.html', caption: 'A Serious Talk',            modalBody: '<h4>A Serious Talk</h4><ul><li>Client: A&I Marketing</li><li>10,500+ YouTube views</li></ul><p>Concepting, scripting, storyboards, video, casting, locations, editing, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=v0pZE8WW_Ro'}, 
+          {id: 'done/nsm14_opening_video',       template: 'partials/modal_content.html', caption: 'NSM 2014 Opening Video',    modalBody: '<h4>Nation Sales Meeting Opening Video 2014</h4><ul><li>Client: Sales & Marketing, NA</li></ul><p>Concepting, scripting, storyboards, animation/motion graphics, sound track</p>'}
         ]
       },
       {  id: 'vmg_workwithus',

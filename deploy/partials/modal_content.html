@@ -1,12 +1,14 @@
 <div class="table">
 	<div class="tr">
 		<div class="td centerBoth imgCell">
-			<img src="{{modalContentSrc}}"/>
+			<a href="{{modalLink}}" target="_blank" ng-show="modalLink"><img src="{{modalContentSrc}}"/></a>
+			<span ng-hide="modalLink"><img src="{{modalContentSrc}}"/></span>
 		</div>
 	</div>	
 	<div class="tr" ng-show="modalCaption">
 		<div class="td centerBoth captionCell">
-			<div class="caption">{{modalCaption}}</div>
+			<div class="caption" ng-hide="modalBodyCopy">{{modalCaption}}</div>
+			<div class="modalBody" ng-bind-html="modalBodyCopy" ng-show="modalBodyCopy"></div>
 		</div>
 	</div>	
 </div>
