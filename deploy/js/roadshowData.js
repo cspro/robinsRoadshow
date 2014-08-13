@@ -190,11 +190,10 @@ var slideArray = [
         },
         contentTemplate: 'content_who_we_are',
         directReports: [
-        	{id: 'abdul_mohammed'},
-        	{id: 'clif_smith'},
         	{id: 'jarrett_byrom'},
         	{id: 'jim_karalekas'},
         	{id: 'joanne_pennington'},
+        	{spacer: true},
         	{id: 'lisa_linard'},
         	{id: 'sara_cautillo'}
         ],
@@ -203,7 +202,7 @@ var slideArray = [
         }
       },
       { id: 'dc_why',
-        title: 'Why Digital Communications',
+        title: 'Work With Us',
         contentTemplate: 'content_work_with_us',
         bodyCopy: '<ul><li>Tell the Pearson K20 story & build the Pearson brand.</li><li>Increase awarness of Pearson products & services.</li><li>Increase customer engagement & consideration.</li><li>Drive leads & sales.</li><li>Increase marketing ROI via analysis & message optimization.</li></ul>',
         neoLink: {
