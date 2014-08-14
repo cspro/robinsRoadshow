@@ -179,6 +179,12 @@
       height: 100%;
       z-index: 10;
       padding: 1em;
+      .bodyCopy {
+        h1, h2, h3, h4 {
+          text-transform: none;
+          color: $primaryTextColor;
+        }
+      }
     }
     
     &.sectionTitleSlide {
@@ -582,5 +588,14 @@
   }
 }
 
-.workWithUsContent {
+// Special case aux classes
+
+.whoWeAreRobin {
+  .bodyCopy {
+    position: absolute !important;
+    top: 440px;
+    left: 470px;
+    font-size: 26px;
+    text-align: center;
+  }
 }

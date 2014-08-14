@@ -392,7 +392,7 @@ var marcommWhatWeDo = {
 	level: 'titleSlideLevel',
 	geography: 'North America',
   contentTemplate: 'content_default',
-	bodyCopy: '<p>We partner with Strategic Marketing teams to build awareness, create demand, and ultimately generate sales. Because your communications need to be creative, captivating, compelling, and digital, we will help drive your creative strategy through visual design, video, motion graphics, and customer-facing events. We will help take your marketing plans and convert them into action.</p>'
+	bodyCopy: '<br/><h2>Creativity is 1% inspiration<br/> and 99% perspiration.</h2>'
 };
 
 var marcommWhoWeAre = {  
@@ -407,6 +407,7 @@ var marcommWhoWeAre = {
     title: 'VP, Marketing Programs'
   },
   contentTemplate: 'content_who_we_are',
+  auxClass: 'whoWeAreRobin',
   directReports: [
     {id: 'christine_curtin'},
     {id: 'eric_kome'},
@@ -416,6 +417,7 @@ var marcommWhoWeAre = {
     {id: 'kevin_young'},
     {id: 'michelle_maloof'}
   ],
+  bodyCopy: '<br/><p><em>The power of <br/>creativity at work!</em></p>',
   orgChart: {
     url: 'https://neo.pearson.com/people?filterID=orgchart&orgUser=BROPRO'
   },
