@@ -295,23 +295,24 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		$scope.ready = true;
 	};
 	
-	$scope.onExampleClick = function(e, id) {
-		e.stopPropagation();
-		e.preventDefault();
-		$scope.dialogShown = true;
-	};
-
 	var launchModal = function(item) {
 		$scope.modalContentSrc = item.contentSrc;
 		$scope.modalCaption = item.caption;
 		$scope.modalBodyCopy = item.modalBody;
 		$scope.modalLink = item.modalLink;
+		$scope.modalOpen = true;
 		var content = $compile("<div ng-include=" + item.template + "></div>");
 		$scope.modal = ngDialog.open({
 				template: item.template,
 				scope: $scope,
 				className: 'ngdialog-theme-rr'
 			});
+		$scope.modal.closePromise.then($scope.onModalClose);
+	};
+	
+	$scope.onModalClose = function(data) {
+		$scope.modalOpen = false;
+		// console.log('modal' + data.id + ' has been closed.');
 	};
 	
 	$scope.onContentItemClick = function(e, item) {
@@ -320,6 +321,7 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 			e.preventDefault();
 			launchModal(item);
 		} else if (item && item.url) {
+			// placeholder for launching URLs directly from items
 			console.log(item.url);
 		}
 	};
@@ -355,6 +357,51 @@ roadshow.App.directive('impressInit', function() {
 	return function (scope, elem, attrs) {
 		elem.on('impress:init', function(e) {
 			scope.onImpressInit(e);
+		});
+	};
+});
+
+/*
+roadshow.App.directive('keydown', function() {
+	return function (scope, elem, attrs) {
+		elem.bind('keydown', function (e) {
+			if ( e.keyCode === 9 || ( e.keyCode >= 32 && e.keyCode <= 34 ) || (e.keyCode >= 37 && e.keyCode <= 40) ) {
+				e.preventDefault();
+				// console.log('keydown directive: ' + e.keyCode);
+			}
+		});
+	};
+});
+*/
+
+/*
+ * Replace impress.js key handling in order to intercept keys when modal is open
+ */
+roadshow.App.directive('keyup', function() {
+	return function (scope, elem, attrs) {
+		elem.bind('keyup', function (e) {
+			// console.log('keyup directive: ' + e.keyCode + '; modalOpen: ' + scope.modalOpen);
+			if ( e.keyCode === 9 || ( e.keyCode >= 32 && e.keyCode <= 34 ) || (e.keyCode >= 37 && e.keyCode <= 40) ) {
+				switch( e.keyCode ) {
+					case 33: // pg up
+					case 37: // left
+					case 38: // up
+						if (!scope.modalOpen) {
+							impress().prev();
+						}
+						break;
+					case 9:  // tab
+					case 32: // space
+					case 34: // pg down
+					case 39: // right
+					case 40: // down
+						if (!scope.modalOpen) {
+							impress().next();
+						}
+						break;
+				}
+        e.preventDefault();
+			}
 		});
 	};
 });
