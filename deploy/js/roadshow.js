@@ -9,6 +9,8 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 	$scope.initalScale = 1;
 	$scope.childScale = 0.24;
 	$scope.topLevelLength = 7;
+	$scope.modalContentWidth = 770;
+	$scope.modalContentHeight = 420;
 	$scope.slides = [];
 	$scope.ready = false;
 	
@@ -299,7 +301,15 @@ roadshow.MainCtrl = function($scope, $timeout, $sce, $compile, ngDialog) {
 		$scope.modalContentSrc = item.contentSrc;
 		$scope.modalCaption = item.caption;
 		$scope.modalBodyCopy = item.modalBody;
-		$scope.modalLink = item.modalLink;
+		if (item.videoSrc) {
+			$scope.modalContentType = "video";
+			$scope.modalVideoSrc =  $sce.trustAsResourceUrl(item.videoSrc);
+		} else if (item.linkSrc) {
+			$scope.modalContentType = "link";
+			$scope.modalLinkURL = item.linkURL;
+		} else {
+			$scope.modalContentType = "static";
+		}
 		$scope.modalOpen = true;
 		var content = $compile("<div ng-include=" + item.template + "></div>");
 		$scope.modal = ngDialog.open({

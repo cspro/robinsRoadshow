@@ -1,8 +1,11 @@
 <div class="table">
 	<div class="tr">
 		<div class="td centerBoth imgCell">
-			<a href="{{modalLink}}" target="_blank" ng-show="modalLink"><img src="{{modalContentSrc}}"/></a>
-			<span ng-hide="modalLink"><img src="{{modalContentSrc}}"/></span>
+			<div ng-switch="modalContentType">
+				<iframe ng-switch-when="video" width="{{modalContentWidth}}" height="{{modalContentHeight}}" src="{{modalVideoSrc}}"></iframe>
+				<a ng-switch-when="link" href="{{modalLinkURL}}" target="_blank"><img src="{{modalContentSrc}}"/></a>
+				<span ng-switch-default><img src="{{modalContentSrc}}"/></span>
+			</div>
 		</div>
 	</div>	
 	<div class="tr" ng-show="modalCaption">

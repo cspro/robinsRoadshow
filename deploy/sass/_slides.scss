@@ -213,7 +213,7 @@
       }
       .slideCover {
         .sectionIcon {
-          border-width: 12px;
+          border-width: 16px;
           border-radius: 100px;
           width: 600px;
           height: 600px;
@@ -589,6 +589,12 @@
 }
 
 // Special case aux classes
+.whatWeDoRobin {
+  .bodyCopy {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .whoWeAreRobin {
   .bodyCopy {

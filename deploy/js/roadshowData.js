@@ -30,7 +30,7 @@ var slideArray = [
         	{id: 'tricia_larson'}
         ],
         orgChart: {
-          url: 'https://neo.pearson.com/people/UCURTCH/people?filterID=orgchart'
+          url: 'https://neo.pearson.com/docs/DOC-313053'
         }
       },
       {  id: 'pm_why',
@@ -74,13 +74,13 @@ var slideArray = [
         },
         contentTemplate: 'content_who_we_are',
         directReports: [
-        	{id: 'amy_cox'},
-        	{id: 'dede_eschen'},
-        	{id: 'janna_dinolfo'},
-        	{spacer: true},
-        	{id: 'joanne_foster'},
         	{id: 'shawn_humphrey'},
-        	{id: 'valerie_vallejo'},
+        	{id: 'joanne_foster'},
+        	{id: 'tim_wilson'},
+        	{spacer: true},
+        	{id: 'suzie_nielsen'},
+        	{id: 'janna_dinolfo'},
+        	{id: 'dede_eschen'}
         ],
         orgChart: {
           url: 'https://neo.pearson.com/people?filterID=orgchart&orgUser=pescke'
@@ -90,14 +90,14 @@ var slideArray = [
         title: 'What We\'ve Done',
         contentTemplate: 'content_default',
         gridItems: [
-          {id: 'done/higher_ed_forum',      template: 'partials/modal_content.html', caption: 'Higher Ed Forum'},
-          {id: 'done/online_learning_con',  template: 'partials/modal_content.html', caption: 'Online Learning Conference'},
-          {id: 'done/powerschool_uni',      template: 'partials/modal_content.html', caption: 'PowerSchool University'}, 
-          {id: 'done/phit',                 template: 'partials/modal_content.html', caption: 'PHIT - Information Technology'},
-          {id: 'done/iphase',               template: 'partials/modal_content.html', caption: 'PHASE - Accounting'}, 
-          {id: 'done/siop_14',              template: 'partials/modal_content.html', caption: 'SIOP - 14'},
-          {id: 'done/three_conference',     template: 'partials/modal_content.html', caption: 'Three Conference'},
-          {id: 'done/psu_uni_tech',         template: 'partials/modal_content.html', caption: 'PSU Pearson Techs'}
+          {id: 'done/parcc',                  template: 'partials/modal_content.html', caption: 'PARCC'},
+          {id: 'done/cite_2015',              template: 'partials/modal_content.html', caption: 'Online Learning Conference'},
+          {id: 'done/powerschool_uni',        template: 'partials/modal_content.html', caption: 'PowerSchool University'}, 
+          {id: 'done/phit',                   template: 'partials/modal_content.html', caption: 'PHIT - Information Technology'},
+          {id: 'done/iphase',                 template: 'partials/modal_content.html', caption: 'PHASE - Accounting'}, 
+          {id: 'done/siop_14',                template: 'partials/modal_content.html', caption: 'SIOP - 14'},
+          {id: 'done/three_conference',       template: 'partials/modal_content.html', caption: 'Three Conference'},
+          {id: 'done/pearson_meeting_center', template: 'partials/modal_content.html', caption: 'Pearson Meeting Center'}
         ]
       },
       { id: 'events_why',
@@ -150,8 +150,13 @@ var slideArray = [
         title: 'What We\'ve Done',
         contentTemplate: 'content_default',
         gridItems: [
-          {id: 'done/iste_booth_01', template: 'partials/modal_content.html', caption: 'ISTE Booth 2014'},
-          {id: 'done/iste_booth_02', template: 'partials/modal_content.html', caption: 'ISTE Booth 2014'}
+          {id: 'done/iste_booth_01',    template: 'partials/modal_content.html', caption: 'ISTE Booth 2014'},
+          {id: 'done/iste_booth_02',    template: 'partials/modal_content.html', caption: 'ISTE Booth 2014'},
+          {id: 'done/asha_2013',        template: 'partials/modal_content.html', caption: 'ASHA 2013'},
+        	{spacer: true},
+          {id: 'done/educause_2014_ad', template: 'partials/modal_content.html', caption: 'Educause 2014 Ad'},
+          {id: 'done/apscu_2014',       template: 'partials/modal_content.html', caption: 'APSCU 2014'},
+          {id: 'done/sxsw',             template: 'partials/modal_content.html', caption: 'SXSW'}
         ]
       },
       {  id: 'k20cm_workwithus',
@@ -176,9 +181,9 @@ var slideArray = [
         bodyCopy: '<p>We create campaigns that tell the Pearson K-20 story and build our brand while increasing awareness of Pearson offerings, driving leads and sales, and improving marketing ROI through analysis and message optimization. From Web Communication to eCRM, SEO and SEM to Analytics, we do it all, working to provide you a sound solution to your challenges.</p>',
         gridItems: [
           {id: 'do/overview',               template: 'partials/modal_content.html', caption: 'Overview'},
-          {id: 'do/web_content',            template: 'partials/modal_content.html', caption: 'Web Content'},
+          {id: 'do/web_content',            template: 'partials/modal_content.html', caption: 'Web Communications & Search Marketing'},
           {id: 'do/digital_campaigning', 	  template: 'partials/modal_content.html', caption: 'Digital Campaigning'}, 
-          {id: 'do/analytics_optimization', template: 'partials/modal_content.html', caption: 'Analytics Optimization'}
+          {id: 'do/analytics_optimization', template: 'partials/modal_content.html', caption: 'Message Optimization'}
         ]
       },
       { id: 'dc_whoweare',
@@ -349,9 +354,10 @@ var slideArray = [
         directReports: [
         	{id: 'bill_delehant'},
         	{id: 'david_busch'},
-          {spacer: true},
+        	{id: 'scott_turner'},
           {spacer: true},
         	{id: 'seth_diehl'},
+        	{id: 'tammara_baker'},
         	{id: 'tom_tate'},
         ],
         orgChart: {
@@ -363,12 +369,12 @@ var slideArray = [
         contentTemplate: 'content_default',
         bodyCopy: '',
         gridItems: [
-          {id: 'done/school_of_thought',         template: 'partials/modal_content.html', caption: 'School of Thought',         modalBody: '<h4>School of Thought - 3 part video series</h4><ul><li>Client: Center for eLearning</li><li>2014 Beacon Award finalist</li><li>25,000+ YouTube views</li></ul><p>Concepting, storyboards, video, casting, locations, permits, animation/motion graphics, editing, green screen compositing, 3D modeling & animation, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=7idyNIvVCis'},
-          {id: 'done/future_vision',             template: 'partials/modal_content.html', caption: 'Future Vision',             modalBody: '<h4>A Vision for Personalized and Connected Learning</h4><ul><li>Client: Sales & Marketing, NA</li><li>16,500+ YouTube views</li></ul><p>Concepting, storyboards, video, casting, locations, animation/motion graphics, editing, green screen compositing, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=ysdPO6Kur_I'}, 
-          {id: 'done/teaching_in_a_digital_age', template: 'partials/modal_content.html', caption: 'Teaching in a Digital Age', modalBody: '<h4>Teaching in a Digital Age - multi-part series</h4><ul><li>Client: Research & Innovation Network</li></ul><p>Video, locations, shoot coordination, animation/motion graphics, editing, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=hqteWvrxuy4'},
+          {id: 'done/school_of_thought',         template: 'partials/modal_content.html', caption: 'School of Thought',         modalBody: '<h4>School of Thought - 3 part video series</h4><ul><li>Client: Center for eLearning</li><li>2014 Beacon Award finalist</li><li>25,000+ YouTube views</li></ul><p>Concepting, storyboards, video, casting, locations, permits, animation/motion graphics, editing, green screen compositing, 3D modeling & animation, sound track</p>', videoSrc: '//www.youtube.com/embed/7idyNIvVCis'},
+          {id: 'done/future_vision',             template: 'partials/modal_content.html', caption: 'Future Vision',             modalBody: '<h4>A Vision for Personalized and Connected Learning</h4><ul><li>Client: Sales & Marketing, NA</li><li>16,500+ YouTube views</li></ul><p>Concepting, storyboards, video, casting, locations, animation/motion graphics, editing, green screen compositing, sound track</p>', videoSrc: '//www.youtube.com/embed/ysdPO6Kur_I'}, 
+          {id: 'done/teaching_in_a_digital_age', template: 'partials/modal_content.html', caption: 'Teaching in a Digital Age', modalBody: '<h4>Teaching in a Digital Age - multi-part series</h4><ul><li>Client: Research & Innovation Network</li></ul><p>Video, locations, shoot coordination, animation/motion graphics, editing, sound track</p>', videoSrc: '//www.youtube.com/embed/hqteWvrxuy4'},
           {spacer: true},
-          {id: 'done/breakthrough_commercial',   template: 'partials/modal_content.html', caption: 'Breakthrough Commercial',   modalBody: '<h4>Breakthrough Commercial</h4><ul><li>Client: Sales & Marketing, NA</li><li>4,000+ YouTube views</li></ul><p>Video, animation/motion graphics, voice-over, editing, sound track</p>', modalLink: 'http://www.youtube.com/watch?v=EbNKuVpGZ18'},
-          {id: 'done/a_serious_talk',            template: 'partials/modal_content.html', caption: 'A Serious Talk',            modalBody: '<h4>A Serious Talk</h4><ul><li>Client: A&I Marketing</li><li>10,500+ YouTube views</li></ul><p>Concepting, scripting, storyboards, video, casting, locations, editing, sound track</p>', modalLink: 'https://www.youtube.com/watch?v=v0pZE8WW_Ro'}, 
+          {id: 'done/breakthrough_commercial',   template: 'partials/modal_content.html', caption: 'Breakthrough Commercial',   modalBody: '<h4>Breakthrough Commercial</h4><ul><li>Client: Sales & Marketing, NA</li><li>4,000+ YouTube views</li></ul><p>Video, animation/motion graphics, voice-over, editing, sound track</p>', videoSrc: '//www.youtube.com/embed/EbNKuVpGZ18'},
+          {id: 'done/a_serious_talk',            template: 'partials/modal_content.html', caption: 'A Serious Talk',            modalBody: '<h4>A Serious Talk</h4><ul><li>Client: A&I Marketing</li><li>10,500+ YouTube views</li></ul><p>Concepting, scripting, storyboards, video, casting, locations, editing, sound track</p>', videoSrc: '//www.youtube.com/embed/v0pZE8WW_Ro'}, 
           {id: 'done/nsm14_opening_video',       template: 'partials/modal_content.html', caption: 'NSM 2014 Opening Video',    modalBody: '<h4>Nation Sales Meeting Opening Video 2014</h4><ul><li>Client: Sales & Marketing, NA</li></ul><p>Concepting, scripting, storyboards, animation/motion graphics, sound track</p>'}
         ]
       },
@@ -392,7 +398,8 @@ var marcommWhatWeDo = {
 	level: 'titleSlideLevel',
 	geography: 'North America',
   contentTemplate: 'content_default',
-	bodyCopy: '<br/><h2>Creativity is 1% inspiration<br/> and 99% perspiration.</h2>'
+  auxClass: 'whatWeDoRobin',
+	bodyCopy: '<br/><br/><br/><h2>Thomas Edison said, <br/><em>“Genius is 1% inspiration<br/>and 99% perspiration.”</em></h2>'
 };
 
 var marcommWhoWeAre = {  
@@ -417,7 +424,7 @@ var marcommWhoWeAre = {
     {id: 'kevin_young'},
     {id: 'michelle_maloof'}
   ],
-  bodyCopy: '<br/><p><em>The power of <br/>creativity at work!</em></p>',
+  bodyCopy: '<br/><p><em>The power of <br/>inspiration at work!</em></p>',
   orgChart: {
     url: 'https://neo.pearson.com/people?filterID=orgchart&orgUser=BROPRO'
   },
