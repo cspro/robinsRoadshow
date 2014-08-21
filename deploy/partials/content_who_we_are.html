@@ -15,7 +15,7 @@
 				<div class="directReport" ng-repeat="item in slide.directReports">
 					<div class="gridItemWrapper">
 						<div class="gridItemBorder" ng-hide="item.spacer">
-							<img class="gridItem" src="{{item.src}}" alt="{{item.name}}"/>
+							<img class="gridItem" ng-src="{{item.src}}" alt="{{item.name}}"/>
 						</div>
 						<div class="gridItemSpacer" ng-show="item.spacer"></div>
 					</div>

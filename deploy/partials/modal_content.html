@@ -2,9 +2,9 @@
 	<div class="tr">
 		<div class="td centerBoth imgCell">
 			<div ng-switch="modalContentType">
-				<iframe ng-switch-when="video" width="{{modalContentWidth}}" height="{{modalContentHeight}}" src="{{modalVideoSrc}}"></iframe>
-				<a ng-switch-when="link" href="{{modalLinkURL}}" target="_blank"><img src="{{modalContentSrc}}"/></a>
-				<span ng-switch-default><img src="{{modalContentSrc}}"/></span>
+				<iframe ng-switch-when="video" width="{{modalContentWidth}}" height="{{modalContentHeight}}" ng-src="{{modalVideoSrc}}"></iframe>
+				<a ng-switch-when="link" href="{{modalLinkURL}}" target="_blank"><img ng-src="{{modalContentSrc}}"/></a>
+				<span ng-switch-default><img ng-src="{{modalContentSrc}}"/></span>
 			</div>
 		</div>
 	</div>	
